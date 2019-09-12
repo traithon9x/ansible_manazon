@@ -1,0 +1,24 @@
+---
+- include: "net_bases.yml"
+- include: "routing_rule.yml"
+- include: "rollingvms.yml"
+
+# - name:
+#   ping:
+
+# ‑ name: Configure Frontend
+#   hosts: frontend
+#   remote_user: ubuntu
+#   gather_facts: no
+#   roles:
+#    ‑ aws.frontend
+
+# ‑ name: Configure Backend
+#   hosts: backend
+#   remote_user: ubuntu
+#   gather_facts: no
+#   vars:
+#   ansible_ssh_common_args:
+#    "‑o ProxyCommand='ssh ‑W %h:%p‑q ubuntu@{{ hostvars['localhost']['frontendvm']['instances'][0]['public_ip'] }}'"
+#  roles:
+#  ‑ aws.backend

@@ -1,0 +1,24 @@
+---
+# tasks file for ec2
+
+
+- name: install squid proxy software
+  yum:
+    name: squid
+    state: present
+    # cache_valid_time: 86400
+
+- name: Configuration Squid proxy
+  template:
+    src: templates/squid.conf.j2
+    dest: /etc/squid/squid.conf
+  notify: restart squid
+
+
+- name: start and enable squid services
+  systemd:
+    enabled: yes
+    state: started
+    daemon-reload: yes
+    name: squid
+

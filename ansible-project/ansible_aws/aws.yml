@@ -1,0 +1,13 @@
+---
+- hosts: vpc
+  environment:
+   AWS_ACCESS_KEY_ID: "{{ aws_access_key }}"
+   AWS_SECRET_ACCESS_KEY: "{{ aws_secret_key }}"
+   AWS_REGION: "{{ aws_region }}"
+  roles:
+   - common
+  
+  vars:
+   
+#use --ask-vault-pass to decrypt file aws_vars.yml
+

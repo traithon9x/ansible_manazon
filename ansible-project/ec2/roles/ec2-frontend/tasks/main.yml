@@ -1,0 +1,4 @@
+---
+# tasks file for ec2
+- include: "proxyconfig.yml"
+- include: "install_package.yml"

@@ -1,0 +1,79 @@
+---
+
+# - name: create volumes fact backend
+#   set_fact:
+#    vols:
+#     device_name: '/dev/{{ item.attach_point }}'
+#     volume_type: 'gp2'
+#     volume_size: "{{ item.volume_size }}"
+#     delete_on_termination: 'true'
+#   with_items: "{{ volsbackend }}"
+#   register: vols_backend
+
+
+
+- name: Deploy Backend
+  ec2:
+   key_name: ansible-admin-key
+   instance_type:  "{{ instance_type }}"
+   image: "{{ image }}"
+   region: "{{ aws_region }}"
+   wait: yes
+  #  id: backend_test1
+   instance_tags:
+    backend: backend
+
+   assign_public_ip: no
+  #  volumes: "{{ vols_backend.results | map(attribute='ansible_facts.vols') | list }}"
+   vpc_subnet_id: "{{ mysubnetint.subnet.id }}"
+   group_id: "{{ intsecg.group_id }}"
+  register: backendvm
+  tags: createbackend
+
+
+- name: add backend to group
+  add_host:
+   hostname: "{{ item.private_ip }}"
+   groupname: backend
+  with_items:
+   "{{ backendvm.instances }}"
+
+# - name: create volumes fact frontend
+#   set_fact:
+#    vol:
+#     device_name: '/dev/{{ item.attach_point }}'
+#     volume_type: 'gp2'
+#     volume_size: "{{ item.volume_size }}"
+#     delete_on_termination: 'true'
+#   with_items: "{{ volsfontend }}"
+#   register: vols_frontend
+
+- name: Deploy Frontend
+  ec2:
+   key_name: ansible-admin-key
+   instance_type: "{{ instance_type }}"
+   image: "{{ image }}"
+   region: "{{ aws_region }}"
+   wait: yes
+  #  id: frontend_test1
+   instance_tags:
+    frontend: frontend
+   assign_public_ip: yes
+  #  volumes: "{{ vols_frontend.results | map(attribute='ansible_facts.vol') | list }}"
+   vpc_subnet_id: "{{ mysubnetext.subnet.id }}"
+   group_id: "{{ extsecg.group_id }}"
+  register: frontendvm
+  tags: createfrontend
+  
+- name: add frontend to group
+  add_host:
+   hostname: "{{ item.public_ip }}"
+   groupname: frontend
+  with_items: "{{ frontendvm.instances }}"
+
+- name: Wait for ssh of frontend
+  wait_for:
+   host: "{{ item.public_dns_name }}"
+   port: 22
+   state: started
+  with_items: "{{ frontendvm.instances }}"

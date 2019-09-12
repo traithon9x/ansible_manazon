@@ -1,0 +1,31 @@
+---
+
+netname: inf
+cidr_master: 192.168.0.0/16
+
+#internal subnet
+name_int: int-sub
+cidr: 192.168.100.0/24
+
+#expternal VPC
+vpc_ext: 172.25.0.0/28
+vpc_subnet: 172.25.0.0/28
+name_ext: ext-sub
+
+#ec2 type 
+image: ami-0c322300a1dd5dc79
+instance_type: t2.micro
+
+
+
+# volsbackend:
+#   - attach_point: 'sda1'
+#     volume_size: '10'
+#   - attach_point: 'xvdb'
+#     volume_size: '10'
+#   - attach_point: 'xvdc'
+#     volume_size: '10'
+
+# volsfontend:
+#   - attach_point: 'sda1'
+#     volume_size: '10'

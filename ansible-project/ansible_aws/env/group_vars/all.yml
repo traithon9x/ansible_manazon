@@ -1,0 +1,4 @@
+---
+#run ansible from locally default ,not run SSH
+ansible_connection: local
+

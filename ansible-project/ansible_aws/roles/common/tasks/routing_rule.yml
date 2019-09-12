@@ -1,0 +1,102 @@
+---
+
+- name: Gather Route Tables
+  ec2_vpc_route_table_facts:
+   region: "{{ aws_region }}"
+   filters:
+    vpc_id: "{{ myvpcint.vpc.id }}"
+  register: inttables
+  tags: gatherroutes
+
+
+- name: Set Route Out Int VPC to Ext
+  ec2_vpc_route_table:
+   vpc_id: "{{ myvpcint.vpc.id }}"
+   region: "{{ aws_region }}"
+   route_table_id:
+    "{{ inttables.route_tables[0].id }}"
+   tags:
+    Name: "{{ netname }}-Int"
+   subnets:
+    - "{{ mysubnetint.subnet.id }}"
+   routes:
+    - dest: "{{ vpc_ext }}"
+      vpc_peering_connection_id:
+       "{{ myvpcpeering.peering_id }}"
+  register: outboundroutetable
+  tags: routeout
+
+- name: set route in to external VPC
+  ec2_vpc_route_table:
+   vpc_id: "{{ myvpcext.vpc.id }}"
+   region: "{{ aws_region }}"
+   tags:
+    Name: "{{ netname }}-Ext"
+   subnets:
+    - "{{ mysubnetext.subnet.id }}"
+   routes:
+    - dest: "{{ cidr_master }}"
+      vpc_peering_connection_id:
+       "{{ myvpcpeering.peering_id }}"
+    - dest: 0.0.0.0/0
+      gateway_id: igw
+  register: inboundroutetable
+  tags: routein
+
+- name: internal Secgroup
+  ec2_group:
+   name: "{{ netname }}intsecgroup"
+   vpc_id: "{{ myvpcint.vpc.id }}"
+   region: "{{ aws_region }}"
+   purge_rules: true
+   description: Ansible-Generated internal rule
+   rules:
+    - proto: udp
+      from_port: 12345
+      to_port: 12345
+      cidr_ip: 0.0.0.0/0
+    - proto: tcp
+      from_port: 22
+      to_port: 22
+      cidr_ip: 0.0.0.0/0
+    - proto: tcp
+      from_port: 443
+      to_port: 443
+      cidr_ip: 0.0.0.0/0
+  register: intsecg
+  tags: internalsec
+
+- name: External Secgroup
+  ec2_group:
+   name: "{{ netname }}extsecgroup"
+   vpc_id: "{{ myvpcext.vpc.id }}"
+   region: "{{ aws_region }}"
+   purge_rules: true
+   description: Ansible-Generated External Rules
+   rules:
+    - proto: udp
+      from_port: 12345
+      to_port: 12345
+      cidr_ip: 0.0.0.0/0
+    - proto: tcp
+      from_port: 22
+      to_port: 22
+      cidr_ip: 0.0.0.0/0
+    - proto: tcp
+      from_port: 443
+      to_port: 443
+      cidr_ip: 0.0.0.0/0
+    - proto: tcp
+      from_port: 3128
+      to_port: 3128
+      cidr_ip: 192.168.0.0/16
+  register: extsecg
+  tags: externalsec
+
+#- name: Update Auto
+# ec2_auto_assign_public_ip_for_subnet:
+#  subnet: "{{ mysubnetext.subnet.id }}"
+#   region: "{{ aws_region }}"
+#   state: present
+
+

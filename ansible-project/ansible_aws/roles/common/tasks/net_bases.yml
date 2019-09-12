@@ -1,0 +1,84 @@
+---
+- name: SSH key
+  ec2_key:
+   name: ansible-admin-key
+   key_material: "{{ item }}"
+   state: present
+   region: "{{ aws_region }}"
+  with_file: env/ssh/id_rsa.pub
+  register: sshkey
+  tags: sshkey
+
+- name: CREATE VPC INT
+  ec2_vpc_net:
+   name: "{{ netname }}-Int"
+   cidr_block: "{{cidr_master}}"
+   region: "{{ aws_region }}"
+  tags: create_vpc_int
+  register: myvpcint
+
+- name: "set fact: VPC_ID"
+  set_fact:
+   vpc_id: "{{ myvpcint.vpc.id }}"
+  
+- name: Create Subnet Int
+  ec2_vpc_subnet:
+   vpc_id: "{{ vpc_id }}"
+   cidr: "{{ cidr }}"
+   region: "{{ aws_region }}"
+   state: present
+   tags:
+    Name: "{{ name_int }}"
+  register: mysubnetint
+  tags: create_subnet_int
+
+# - name: "Set fact:VPC Subnets IDs "
+#   set_fact:
+#    vpc_subnet_ids: "{{ vpc_subnet_ids | default({}) | combine({ item.subnet.tags.Name: item.subnet.id}) }}"
+#   loop: "{{ mysubnetint.results }}"
+
+
+- name: Create VPC Ext
+  ec2_vpc_net:
+   name: "{{ netname }}-Ext"
+   cidr_block: "{{ vpc_ext }}"
+   region: "{{ aws_region }}"
+  tags: create_vpc_ext
+  register: myvpcext
+
+- name: Create Subnet Ext
+  ec2_vpc_subnet:
+   cidr: "{{ vpc_ext }}"
+   vpc_id: "{{ myvpcext.vpc.id }}"
+   region: "{{ aws_region }}"
+   state: present
+   resource_tags:
+    Name: ext-sub
+  tags: create_subnet_ext
+  register: mysubnetext
+
+- name: Create VPC Peering
+  ec2_vpc_peer:
+   region: "{{ aws_region }}"
+   vpc_id: "{{ myvpcint.vpc.id }}"
+   peer_vpc_id: "{{ myvpcext.vpc.id }}"
+   state: present
+  register: myvpcpeering
+  tags: createvpcpeering
+
+- name: Accept VPC Peering
+  ec2_vpc_peer:
+   region: "{{ aws_region }}"
+   peering_id: "{{ myvpcpeering.peering_id }}"
+   state: accept
+  register: action_peer
+
+- name: Create internet GateWay
+  ec2_vpc_igw:
+   vpc_id: "{{ myvpcext.vpc.id }}"
+   region: "{{ aws_region }}"
+   state: present
+  register: igw
+  tags: igw
+   
+   

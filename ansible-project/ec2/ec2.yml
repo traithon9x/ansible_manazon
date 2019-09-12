@@ -1,0 +1,61 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  user: root
+  pre_tasks:
+    - include_vars: group_vars/project.aws.yml
+
+  #get facts for ec2 ip
+  tasks:
+
+   - name: gather fact ec2 for frontend
+     ec2_instance_facts:
+      aws_access_key: "{{ aws_access_key }}"
+      aws_secret_key: "{{ aws_secret_key }}"
+      region: "{{ aws_region }}"
+      filters:
+        "tag:frontend": frontend
+     register: frontend_info   
+
+   - name: add host frontend
+     add_host:
+       name: "{{ frontend_info.instances[0].public_ip_address }}"
+       groups: frontend-vm
+
+   - name: gather fact ec2 for backend
+     ec2_instance_facts:
+      aws_access_key: "{{ aws_access_key }}"
+      aws_secret_key: "{{ aws_secret_key }}"
+      region: "{{ aws_region }}"
+      filters:
+        "tag:backend": backend
+     register: backend_info
+
+   - name: add host backend
+     add_host:
+       name: "{{ backend_info.instances[0].private_ip_address }}"
+       groups: backend-vm
+
+  
+- hosts: frontend-vm
+  remote_user: ec2-user
+  gather_facts: no
+  become: true
+  become_method: sudo
+  roles:
+    - ec2-frontend
+
+    
+- hosts: backend-vm
+  remote_user: ec2-user
+  gather_facts: no
+  become: true
+  become_method: sudo
+  vars:
+   frontend_private_ip: "{{ hostvars['localhost']['frontend_info']['instances'][0]['private_ip_address'] }}"
+   frontend_public_ip: "{{ hostvars['localhost']['frontend_info']['instances'][0]['public_ip_address'] }}"
+   ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q ec2-user@{{frontend_public_ip}}"'
+  roles:
+    - ec2-backend
+ 

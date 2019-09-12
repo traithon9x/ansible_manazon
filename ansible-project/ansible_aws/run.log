@@ -1,0 +1,3457 @@
+2019-09-11 10:17:42,427 p=13028 u=root |   [WARNING]:  * Failed to parse /ansible/ansible_aws/env/inventory with script plugin: problem running /ansible/ansible_aws/env/inventory --list ([Errno 8]
+Exec format error: '/ansible/ansible_aws/env/inventory')
+
+2019-09-11 10:17:42,427 p=13028 u=root |   [WARNING]:  * Failed to parse /ansible/ansible_aws/env/inventory with yaml plugin: Syntax Error while loading YAML.   expected '<document start>', but
+found '<scalar>'  The error appears to be in '/ansible/ansible_aws/env/inventory': line 2, column 1, but may be elsewhere in the file depending on the
+exact syntax problem.  The offending line appears to be:  [vpc] vpc.ansible ansible_python_interpreter=/usr/local/bin/python' ^ here
+
+2019-09-11 10:17:42,428 p=13028 u=root |   [WARNING]:  * Failed to parse /ansible/ansible_aws/env/inventory with ini plugin: /ansible/ansible_aws/env/inventory:2: Error parsing host definition
+'vpc.ansible ansible_python_interpreter=/usr/local/bin/python'': No closing quotation
+
+2019-09-11 10:17:42,428 p=13028 u=root |   [WARNING]: Unable to parse /ansible/ansible_aws/env/inventory as an inventory source
+
+2019-09-11 10:17:42,428 p=13028 u=root |   [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2019-09-11 10:17:42,430 p=13028 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2019-09-11 10:17:43,837 p=13028 u=root |  PLAY [vpc] ************************************************************************************************************************************************
+2019-09-11 10:17:43,837 p=13028 u=root |  skipping: no hosts matched
+2019-09-11 10:17:43,837 p=13028 u=root |  PLAY RECAP ************************************************************************************************************************************************
+2019-09-11 10:17:57,371 p=13049 u=root |  [DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to allow bad characters in group names by default, this will change, but still be
+ user configurable on deprecation. This feature will be removed in version 2.10. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2019-09-11 10:17:57,371 p=13049 u=root |   [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+2019-09-11 10:17:58,772 p=13049 u=root |  PLAY [vpc] ************************************************************************************************************************************************
+2019-09-11 10:17:58,807 p=13049 u=root |  TASK [Gathering Facts] ************************************************************************************************************************************
+2019-09-11 10:17:59,663 p=13049 u=root |  ok: [vpc.ansible]
+2019-09-11 10:17:59,699 p=13049 u=root |  TASK [common : SSH key] ***********************************************************************************************************************************
+2019-09-11 10:18:03,872 p=13049 u=root |  ok: [vpc.ansible] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400)
+2019-09-11 10:18:03,911 p=13049 u=root |  TASK [common : CREATE VPC INT] ****************************************************************************************************************************
+2019-09-11 10:18:11,338 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:18:11,376 p=13049 u=root |  TASK [common : set fact: VPC_ID] **************************************************************************************************************************
+2019-09-11 10:18:11,396 p=13049 u=root |  ok: [vpc.ansible]
+2019-09-11 10:18:11,429 p=13049 u=root |  TASK [common : Create Subnet Int] *************************************************************************************************************************
+2019-09-11 10:18:16,021 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:18:16,059 p=13049 u=root |  TASK [common : Create VPC Ext] ****************************************************************************************************************************
+2019-09-11 10:18:23,117 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:18:23,156 p=13049 u=root |  TASK [common : Create Subnet Ext] *************************************************************************************************************************
+2019-09-11 10:18:27,663 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:18:27,699 p=13049 u=root |  TASK [common : Create VPC Peering] ************************************************************************************************************************
+2019-09-11 10:18:30,199 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:18:30,236 p=13049 u=root |  TASK [common : Accept VPC Peering] ************************************************************************************************************************
+2019-09-11 10:18:32,623 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:18:32,660 p=13049 u=root |  TASK [common : Create internet GateWay] *******************************************************************************************************************
+2019-09-11 10:18:35,394 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:18:35,432 p=13049 u=root |  TASK [common : Gather Route Tables] ***********************************************************************************************************************
+2019-09-11 10:18:39,689 p=13049 u=root |  ok: [vpc.ansible]
+2019-09-11 10:18:39,731 p=13049 u=root |  TASK [common : Set Route Out Int VPC to Ext] **************************************************************************************************************
+2019-09-11 10:18:50,389 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:18:50,429 p=13049 u=root |  TASK [common : set route in to external VPC] **************************************************************************************************************
+2019-09-11 10:19:01,532 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:19:01,571 p=13049 u=root |  TASK [common : internal Secgroup] *************************************************************************************************************************
+2019-09-11 10:19:10,473 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:19:10,511 p=13049 u=root |  TASK [common : External Secgroup] *************************************************************************************************************************
+2019-09-11 10:19:18,952 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:19:18,999 p=13049 u=root |  TASK [common : Deploy Backend] ****************************************************************************************************************************
+2019-09-11 10:19:46,123 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:19:46,163 p=13049 u=root |  TASK [common : add backend to group] **********************************************************************************************************************
+2019-09-11 10:19:46,195 p=13049 u=root |  changed: [vpc.ansible] => (item={'id': 'i-07654c0704520ba20', 'ami_launch_index': '0', 'private_ip': '192.168.100.223', 'private_dns_name': 'ip-192-168-100-223.ec2.internal', 'public_ip': None, 'dns_name': '', 'public_dns_name': '', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-0c322300a1dd5dc79', 'key_name': 'ansible-admin-key', 'placement': 'us-east-1e', 'region': 'us-east-1', 'kernel': None, 'ramdisk': None, 'launch_time': '2019-09-11T10:19:28.000Z', 'instance_type': 't2.micro', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {'backend': 'backend'}, 'groups': {'sg-0931fca2854973b99': 'infintsecgroup'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-08d86b294608af2f8', 'delete_on_termination': True}}, 'tenancy': 'default'})
+2019-09-11 10:19:46,232 p=13049 u=root |  TASK [common : Deploy Frontend] ***************************************************************************************************************************
+2019-09-11 10:20:12,615 p=13049 u=root |  changed: [vpc.ansible]
+2019-09-11 10:20:12,654 p=13049 u=root |  TASK [common : add frontend to group] *********************************************************************************************************************
+2019-09-11 10:20:12,688 p=13049 u=root |  changed: [vpc.ansible] => (item={'id': 'i-0471bff080866dfb7', 'ami_launch_index': '0', 'private_ip': '172.25.0.13', 'private_dns_name': 'ip-172-25-0-13.ec2.internal', 'public_ip': '54.173.125.231', 'dns_name': 'ec2-54-173-125-231.compute-1.amazonaws.com', 'public_dns_name': 'ec2-54-173-125-231.compute-1.amazonaws.com', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-0c322300a1dd5dc79', 'key_name': 'ansible-admin-key', 'placement': 'us-east-1e', 'region': 'us-east-1', 'kernel': None, 'ramdisk': None, 'launch_time': '2019-09-11T10:19:54.000Z', 'instance_type': 't2.micro', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {'frontend': 'frontend'}, 'groups': {'sg-02faf5d7bf4534071': 'infextsecgroup'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-0231833891704d562', 'delete_on_termination': True}}, 'tenancy': 'default'})
+2019-09-11 10:20:12,725 p=13049 u=root |  TASK [common : Wait for ssh of frontend] ******************************************************************************************************************
+2019-09-11 10:21:19,277 p=13049 u=root |  ok: [vpc.ansible] => (item={'id': 'i-0471bff080866dfb7', 'ami_launch_index': '0', 'private_ip': '172.25.0.13', 'private_dns_name': 'ip-172-25-0-13.ec2.internal', 'public_ip': '54.173.125.231', 'dns_name': 'ec2-54-173-125-231.compute-1.amazonaws.com', 'public_dns_name': 'ec2-54-173-125-231.compute-1.amazonaws.com', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-0c322300a1dd5dc79', 'key_name': 'ansible-admin-key', 'placement': 'us-east-1e', 'region': 'us-east-1', 'kernel': None, 'ramdisk': None, 'launch_time': '2019-09-11T10:19:54.000Z', 'instance_type': 't2.micro', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {'frontend': 'frontend'}, 'groups': {'sg-02faf5d7bf4534071': 'infextsecgroup'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-0231833891704d562', 'delete_on_termination': True}}, 'tenancy': 'default'})
+2019-09-11 10:21:19,281 p=13049 u=root |  PLAY RECAP ************************************************************************************************************************************************
+2019-09-11 10:21:19,282 p=13049 u=root |  vpc.ansible                : ok=20   changed=15   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2019-09-12 02:13:47,611 p=14188 u=root |  [DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to allow bad characters in group names by default, this will 
+change, but still be user configurable on deprecation. This feature will be removed in version 2.10. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+2019-09-12 02:13:47,612 p=14188 u=root |   [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+2019-09-12 02:13:49,041 p=14188 u=root |  PLAY [vpc] ******************************************************************************************************************************
+2019-09-12 02:13:49,081 p=14188 u=root |  TASK [Gathering Facts] ******************************************************************************************************************
+2019-09-12 02:13:54,038 p=14188 u=root |  ok: [vpc.ansible]
+2019-09-12 02:13:54,077 p=14188 u=root |  TASK [common : SSH key] *****************************************************************************************************************
+2019-09-12 02:13:54,400 p=14188 u=root |  failed: [vpc.ansible] (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400) => {"ansible_loop_var": "item", "changed": false, "item": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400", "msg": "Failed to import the required Python library (botocore or boto3) on 5c7a12f96400's Python /usr/bin/python. Please read module documentation and install in the appropriate location"}
+2019-09-12 02:13:54,403 p=14188 u=root |  PLAY RECAP ******************************************************************************************************************************
+2019-09-12 02:13:54,403 p=14188 u=root |  vpc.ansible                : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2019-09-12 02:16:29,325 p=14266 u=root |  [DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to allow bad characters in group names by default, this will 
+change, but still be user configurable on deprecation. This feature will be removed in version 2.10. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+2019-09-12 02:16:29,325 p=14266 u=root |   [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+2019-09-12 02:16:30,753 p=14266 u=root |  PLAY [vpc] ******************************************************************************************************************************
+2019-09-12 02:16:30,790 p=14266 u=root |  TASK [Gathering Facts] ******************************************************************************************************************
+2019-09-12 02:16:35,860 p=14266 u=root |  ok: [vpc.ansible]
+2019-09-12 02:16:35,900 p=14266 u=root |  TASK [common : SSH key] *****************************************************************************************************************
+2019-09-12 02:16:36,223 p=14266 u=root |  failed: [vpc.ansible] (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400) => {"ansible_loop_var": "item", "changed": false, "item": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400", "msg": "Failed to import the required Python library (botocore or boto3) on 5c7a12f96400's Python /usr/bin/python. Please read module documentation and install in the appropriate location"}
+2019-09-12 02:16:36,226 p=14266 u=root |  PLAY RECAP ******************************************************************************************************************************
+2019-09-12 02:16:36,226 p=14266 u=root |  vpc.ansible                : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2019-09-12 02:16:58,952 p=14344 u=root |  ansible-playbook 2.8.0
+  config file = /ansible/ansible_aws/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.6/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.6.9 (default, Aug 21 2019, 00:27:28) [GCC 8.3.0]
+2019-09-12 02:16:58,953 p=14344 u=root |  Using /ansible/ansible_aws/ansible.cfg as config file
+2019-09-12 02:16:58,998 p=14344 u=root |  host_list declined parsing /ansible/ansible_aws/env/inventory as it did not pass it's verify_file() method
+2019-09-12 02:16:59,005 p=14344 u=root |  auto declined parsing /ansible/ansible_aws/env/inventory as it did not pass it's verify_file() method
+2019-09-12 02:16:59,014 p=14344 u=root |  [DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to allow bad characters in group names by default, this will 
+change, but still be user configurable on deprecation. This feature will be removed in version 2.10. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+2019-09-12 02:16:59,014 p=14344 u=root |   [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+2019-09-12 02:16:59,015 p=14344 u=root |  Parsed /ansible/ansible_aws/env/inventory inventory source with ini plugin
+2019-09-12 02:16:59,833 p=14344 u=root |  statically imported: /ansible/ansible_aws/roles/common/tasks/net_bases.yml
+2019-09-12 02:17:00,001 p=14344 u=root |  statically imported: /ansible/ansible_aws/roles/common/tasks/routing_rule.yml
+2019-09-12 02:17:00,024 p=14344 u=root |  statically imported: /ansible/ansible_aws/roles/common/tasks/rollingvms.yml
+2019-09-12 02:17:00,422 p=14344 u=root |  PLAYBOOK: aws.yml ***********************************************************************************************************************
+2019-09-12 02:17:00,423 p=14344 u=root |  1 plays in aws.yml
+2019-09-12 02:17:00,445 p=14344 u=root |  PLAY [vpc] ******************************************************************************************************************************
+2019-09-12 02:17:00,481 p=14344 u=root |  TASK [Gathering Facts] ******************************************************************************************************************
+2019-09-12 02:17:00,481 p=14344 u=root |  task path: /ansible/ansible_aws/aws.yml:2
+2019-09-12 02:17:00,497 p=14344 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:17:00,498 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:17:00,502 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254620.4967182-183456995990178 `" && echo ansible-tmp-1568254620.4967182-183456995990178="` echo /root/.ansible/tmp/ansible-tmp-1568254620.4967182-183456995990178 `" ) && sleep 0'
+2019-09-12 02:17:00,874 p=14344 u=root |  <vpc.ansible> Attempting python interpreter discovery
+2019-09-12 02:17:00,876 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo PLATFORM; uname; echo FOUND; command -v '"'"'/usr/bin/python'"'"'; command -v '"'"'python3.7'"'"'; command -v '"'"'python3.6'"'"'; command -v '"'"'python3.5'"'"'; command -v '"'"'python2.7'"'"'; command -v '"'"'python2.6'"'"'; command -v '"'"'/usr/libexec/platform-python'"'"'; command -v '"'"'/usr/bin/python3'"'"'; command -v '"'"'python'"'"'; echo ENDFOUND && sleep 0'
+2019-09-12 02:17:00,882 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c '/usr/bin/python && sleep 0'
+2019-09-12 02:17:00,919 p=14344 u=root |  <vpc.ansible> Python interpreter discovery fallback (unsupported Linux distribution: alpine)
+2019-09-12 02:17:00,922 p=14344 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/system/setup.py
+2019-09-12 02:17:00,923 p=14344 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14344ch9i9ny1/tmp0ko2chfn TO /root/.ansible/tmp/ansible-tmp-1568254620.4967182-183456995990178/AnsiballZ_setup.py
+2019-09-12 02:17:00,924 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254620.4967182-183456995990178/ /root/.ansible/tmp/ansible-tmp-1568254620.4967182-183456995990178/AnsiballZ_setup.py && sleep 0'
+2019-09-12 02:17:00,929 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/bin/python /root/.ansible/tmp/ansible-tmp-1568254620.4967182-183456995990178/AnsiballZ_setup.py && sleep 0'
+2019-09-12 02:17:05,596 p=14344 u=root |  ok: [vpc.ansible] => {
+    "ansible_facts": {
+        "ansible_all_ipv4_addresses": [
+            "172.17.0.2"
+        ],
+        "ansible_all_ipv6_addresses": [],
+        "ansible_apparmor": {
+            "status": "disabled"
+        },
+        "ansible_architecture": "x86_64",
+        "ansible_bios_date": "01/30/2019",
+        "ansible_bios_version": "Hyper-V UEFI Release v4.0",
+        "ansible_cmdline": {
+            "BOOT_IMAGE": "/boot/kernel",
+            "console": "ttyS1",
+            "page_poison": "1",
+            "panic": "1",
+            "root": "/dev/sr0",
+            "text": true,
+            "vsyscall": "emulate"
+        },
+        "ansible_date_time": {
+            "date": "2019-09-12",
+            "day": "12",
+            "epoch": "1568254625",
+            "hour": "02",
+            "iso8601": "2019-09-12T02:17:05Z",
+            "iso8601_basic": "20190912T021705512481",
+            "iso8601_basic_short": "20190912T021705",
+            "iso8601_micro": "2019-09-12T02:17:05.512543Z",
+            "minute": "17",
+            "month": "09",
+            "second": "05",
+            "time": "02:17:05",
+            "tz": "UTC",
+            "tz_offset": "+0000",
+            "weekday": "Thursday",
+            "weekday_number": "4",
+            "weeknumber": "36",
+            "year": "2019"
+        },
+        "ansible_default_ipv4": {
+            "address": "172.17.0.2",
+            "alias": "eth0",
+            "broadcast": "172.17.255.255",
+            "gateway": "172.17.0.1",
+            "interface": "eth0",
+            "macaddress": "02:42:ac:11:00:02",
+            "mtu": 1500,
+            "netmask": "255.255.0.0",
+            "network": "172.17.0.0",
+            "type": "ether"
+        },
+        "ansible_default_ipv6": {},
+        "ansible_device_links": {
+            "ids": {},
+            "labels": {},
+            "masters": {},
+            "uuids": {}
+        },
+        "ansible_devices": {
+            "loop0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop1": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop2": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop3": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop4": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop5": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop6": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop7": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd1": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd10": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd11": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd12": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd13": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd14": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd15": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd2": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd3": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd4": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd5": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd6": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd7": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd8": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd9": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "sda": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Virtual Disk",
+                "partitions": {
+                    "sda1": {
+                        "holders": [],
+                        "links": {
+                            "ids": [],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": []
+                        },
+                        "sectors": "124997952",
+                        "sectorsize": 512,
+                        "size": "59.60 GB",
+                        "start": "2048",
+                        "uuid": null
+                    }
+                },
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "deadline",
+                "sectors": "125000000",
+                "sectorsize": "512",
+                "size": "59.60 GB",
+                "support_discard": "1048576",
+                "vendor": "Msft",
+                "virtual": 1
+            },
+            "sr0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Virtual DVD-ROM",
+                "partitions": {},
+                "removable": "1",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "deadline",
+                "sectors": "908632",
+                "sectorsize": "2048",
+                "size": "443.67 MB",
+                "support_discard": "0",
+                "vendor": "Msft",
+                "virtual": 1
+            },
+            "sr1": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Virtual DVD-ROM",
+                "partitions": {},
+                "removable": "1",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "deadline",
+                "sectors": "536",
+                "sectorsize": "2048",
+                "size": "268.00 KB",
+                "support_discard": "0",
+                "vendor": "Msft",
+                "virtual": 1
+            },
+            "sr2": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Virtual DVD-ROM",
+                "partitions": {},
+                "removable": "1",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "deadline",
+                "sectors": "1715712",
+                "sectorsize": "2048",
+                "size": "837.75 MB",
+                "support_discard": "0",
+                "vendor": "Msft",
+                "virtual": 1
+            }
+        },
+        "ansible_distribution": "Alpine",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/alpine-release",
+        "ansible_distribution_file_variety": "Alpine",
+        "ansible_distribution_major_version": "3",
+        "ansible_distribution_release": "NA",
+        "ansible_distribution_version": "3.10.2",
+        "ansible_dns": {
+            "nameservers": [
+                "192.168.65.1"
+            ]
+        },
+        "ansible_domain": "",
+        "ansible_effective_group_id": 0,
+        "ansible_effective_user_id": 0,
+        "ansible_env": {
+            "ANSIBLE_CONFIG": "ansible.cfg",
+            "AWS_ACCESS_KEY_ID": "AKIAJJ3OJARGQYWAB2XA",
+            "AWS_REGION": "us-east-1",
+            "AWS_SECRET_ACCESS_KEY": "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",
+            "GPG_KEY": "0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D",
+            "HOME": "/root",
+            "HOSTNAME": "5c7a12f96400",
+            "LANG": "C.UTF-8",
+            "LIBRARY_PATH": "/lib:/usr/lib",
+            "OLDPWD": "/ansible",
+            "PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "PWD": "/ansible/ansible_aws",
+            "PYTHON_GET_PIP_SHA256": "57e3643ff19f018f8a00dfaa6b7e4620e3c1a7a2171fd218425366ec006b3bfe",
+            "PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/309a56c5fd94bd1134053a541cb4657a4e47e09d/get-pip.py",
+            "PYTHON_PIP_VERSION": "19.2.3",
+            "PYTHON_VERSION": "3.6.9",
+            "SHLVL": "3",
+            "TERM": "xterm"
+        },
+        "ansible_eth0": {
+            "active": true,
+            "device": "eth0",
+            "ipv4": {
+                "address": "172.17.0.2",
+                "broadcast": "172.17.255.255",
+                "netmask": "255.255.0.0",
+                "network": "172.17.0.0"
+            },
+            "macaddress": "02:42:ac:11:00:02",
+            "mtu": 1500,
+            "promisc": false,
+            "speed": 10000,
+            "type": "ether"
+        },
+        "ansible_fibre_channel_wwn": [],
+        "ansible_fips": false,
+        "ansible_form_factor": "Desktop",
+        "ansible_fqdn": "5c7a12f96400",
+        "ansible_hostname": "5c7a12f96400",
+        "ansible_hostnqn": "",
+        "ansible_interfaces": [
+            "lo",
+            "tunl0",
+            "ip6tnl0",
+            "eth0"
+        ],
+        "ansible_ip6tnl0": {
+            "active": false,
+            "device": "ip6tnl0",
+            "macaddress": "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00",
+            "mtu": 1452,
+            "promisc": false,
+            "type": "unknown"
+        },
+        "ansible_is_chroot": false,
+        "ansible_iscsi_iqn": "",
+        "ansible_kernel": "4.9.184-linuxkit",
+        "ansible_lo": {
+            "active": true,
+            "device": "lo",
+            "ipv4": {
+                "address": "127.0.0.1",
+                "broadcast": "host",
+                "netmask": "255.0.0.0",
+                "network": "127.0.0.0"
+            },
+            "mtu": 65536,
+            "promisc": false,
+            "type": "loopback"
+        },
+        "ansible_local": {},
+        "ansible_lsb": {},
+        "ansible_machine": "x86_64",
+        "ansible_memfree_mb": 175,
+        "ansible_memory_mb": {
+            "nocache": {
+                "free": 1470,
+                "used": 529
+            },
+            "real": {
+                "free": 175,
+                "total": 1999,
+                "used": 1824
+            },
+            "swap": {
+                "cached": 0,
+                "free": 1023,
+                "total": 1023,
+                "used": 0
+            }
+        },
+        "ansible_memtotal_mb": 1999,
+        "ansible_mounts": [
+            {
+                "block_available": 14096453,
+                "block_size": 4096,
+                "block_total": 15313913,
+                "block_used": 1217460,
+                "device": "/dev/sda1",
+                "fstype": "ext4",
+                "inode_available": 3882046,
+                "inode_total": 3907584,
+                "inode_used": 25538,
+                "mount": "/etc/hosts",
+                "options": "rw,relatime,data=ordered",
+                "size_available": 57739071488,
+                "size_total": 62725787648,
+                "uuid": "N/A"
+            },
+            {
+                "block_available": 52835380,
+                "block_size": 4096,
+                "block_total": 71679743,
+                "block_used": 18844363,
+                "device": "//10.0.75.1/D",
+                "fstype": "cifs",
+                "inode_available": 0,
+                "inode_total": 0,
+                "inode_used": 0,
+                "mount": "/ansible",
+                "options": "rw,relatime,vers=3.02,sec=ntlmsspi,cache=strict,username=tkhoang,domain=AAVN,uid=0,noforceuid,gid=0,noforcegid,addr=10.0.75.1,file_mode=0755,dir_mode=0777,iocharset=utf8,nounix,mapposix,nobrl,mfsymlinks,noperm,rsize=1048576,wsize=1048576,echo_interval=60,actimeo=1",
+                "size_available": 216413716480,
+                "size_total": 293600227328,
+                "uuid": "N/A"
+            },
+            {
+                "block_available": 14096453,
+                "block_size": 4096,
+                "block_total": 15313913,
+                "block_used": 1217460,
+                "device": "/dev/sda1",
+                "fstype": "ext4",
+                "inode_available": 3882046,
+                "inode_total": 3907584,
+                "inode_used": 25538,
+                "mount": "/etc/hostname",
+                "options": "rw,relatime,data=ordered",
+                "size_available": 57739071488,
+                "size_total": 62725787648,
+                "uuid": "N/A"
+            },
+            {
+                "block_available": 14096453,
+                "block_size": 4096,
+                "block_total": 15313913,
+                "block_used": 1217460,
+                "device": "/dev/sda1",
+                "fstype": "ext4",
+                "inode_available": 3882046,
+                "inode_total": 3907584,
+                "inode_used": 25538,
+                "mount": "/etc/resolv.conf",
+                "options": "rw,relatime,data=ordered",
+                "size_available": 57739071488,
+                "size_total": 62725787648,
+                "uuid": "N/A"
+            }
+        ],
+        "ansible_nodename": "5c7a12f96400",
+        "ansible_os_family": "Alpine",
+        "ansible_pkg_mgr": "apk",
+        "ansible_proc_cmdline": {
+            "BOOT_IMAGE": "/boot/kernel",
+            "console": [
+                "ttyS0",
+                "ttyS1"
+            ],
+            "page_poison": "1",
+            "panic": "1",
+            "root": "/dev/sr0",
+            "text": true,
+            "vsyscall": "emulate"
+        },
+        "ansible_processor": [
+            "0",
+            "GenuineIntel",
+            "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
+            "1",
+            "GenuineIntel",
+            "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz"
+        ],
+        "ansible_processor_cores": 1,
+        "ansible_processor_count": 1,
+        "ansible_processor_threads_per_core": 2,
+        "ansible_processor_vcpus": 2,
+        "ansible_product_name": "Virtual Machine",
+        "ansible_product_serial": "1356-7680-6723-9352-1868-8605-82",
+        "ansible_product_uuid": "006A72F6-3244-4AF9-A379-9FE35EDF6BA5",
+        "ansible_product_version": "Hyper-V UEFI Release v4.0",
+        "ansible_python": {
+            "executable": "/usr/bin/python",
+            "has_sslcontext": true,
+            "type": "CPython",
+            "version": {
+                "major": 2,
+                "micro": 16,
+                "minor": 7,
+                "releaselevel": "final",
+                "serial": 0
+            },
+            "version_info": [
+                2,
+                7,
+                16,
+                "final",
+                0
+            ]
+        },
+        "ansible_python_version": "2.7.16",
+        "ansible_real_group_id": 0,
+        "ansible_real_user_id": 0,
+        "ansible_selinux": {
+            "status": "Missing selinux Python library"
+        },
+        "ansible_selinux_python_present": false,
+        "ansible_service_mgr": "sysvinit",
+        "ansible_swapfree_mb": 1023,
+        "ansible_swaptotal_mb": 1023,
+        "ansible_system": "Linux",
+        "ansible_system_capabilities": [
+            "cap_chown",
+            "cap_dac_override",
+            "cap_fowner",
+            "cap_fsetid",
+            "cap_kill",
+            "cap_setgid",
+            "cap_setuid",
+            "cap_setpcap",
+            "cap_net_bind_service",
+            "cap_net_raw",
+            "cap_sys_chroot",
+            "cap_mknod",
+            "cap_audit_write",
+            "cap_setfcap+eip"
+        ],
+        "ansible_system_capabilities_enforced": "True",
+        "ansible_system_vendor": "Microsoft Corporation",
+        "ansible_tunl0": {
+            "active": false,
+            "device": "tunl0",
+            "macaddress": "00:00:00:00",
+            "mtu": 1480,
+            "promisc": false,
+            "type": "unknown"
+        },
+        "ansible_uptime_seconds": 71559,
+        "ansible_user_dir": "/root",
+        "ansible_user_gecos": "root",
+        "ansible_user_gid": 0,
+        "ansible_user_id": "root",
+        "ansible_user_shell": "/bin/ash",
+        "ansible_user_uid": 0,
+        "ansible_userspace_architecture": "x86_64",
+        "ansible_userspace_bits": "64",
+        "ansible_virtualization_role": "guest",
+        "ansible_virtualization_type": "docker",
+        "discovered_interpreter_python": "/usr/bin/python",
+        "gather_subset": [
+            "all"
+        ],
+        "module_setup": true
+    },
+    "changed": false
+}
+2019-09-12 02:17:05,597 p=14344 u=root |  META: ran handlers
+2019-09-12 02:17:05,638 p=14344 u=root |  TASK [common : SSH key] *****************************************************************************************************************
+2019-09-12 02:17:05,639 p=14344 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:2
+2019-09-12 02:17:05,680 p=14344 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:17:05,680 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:17:05,687 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254625.6794276-9526030491183 `" && echo ansible-tmp-1568254625.6794276-9526030491183="` echo /root/.ansible/tmp/ansible-tmp-1568254625.6794276-9526030491183 `" ) && sleep 0'
+2019-09-12 02:17:05,917 p=14344 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_key.py
+2019-09-12 02:17:05,919 p=14344 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14344ch9i9ny1/tmptsk9oinu TO /root/.ansible/tmp/ansible-tmp-1568254625.6794276-9526030491183/AnsiballZ_ec2_key.py
+2019-09-12 02:17:05,921 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254625.6794276-9526030491183/ /root/.ansible/tmp/ansible-tmp-1568254625.6794276-9526030491183/AnsiballZ_ec2_key.py && sleep 0'
+2019-09-12 02:17:05,928 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/bin/python /root/.ansible/tmp/ansible-tmp-1568254625.6794276-9526030491183/AnsiballZ_ec2_key.py && sleep 0'
+2019-09-12 02:17:06,052 p=14344 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254625.6794276-9526030491183/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:17:06,062 p=14344 u=root |  The full traceback is:
+WARNING: The below traceback may *not* be related to the actual failure.
+  File "/tmp/ansible_ec2_key_payload_EUPOzA/ansible_ec2_key_payload.zip/ansible/module_utils/aws/core.py", line 105, in __init__
+    local_settings[key] = kwargs.pop(key)
+
+2019-09-12 02:17:06,063 p=14344 u=root |  failed: [vpc.ansible] (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "force": true,
+            "key_material": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400",
+            "name": "ansible-admin-key",
+            "profile": null,
+            "region": "us-east-1",
+            "security_token": null,
+            "state": "present",
+            "validate_certs": true,
+            "wait": false,
+            "wait_timeout": 300
+        }
+    },
+    "item": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400",
+    "msg": "Failed to import the required Python library (botocore or boto3) on 5c7a12f96400's Python /usr/bin/python. Please read module documentation and install in the appropriate location"
+}
+2019-09-12 02:17:06,066 p=14344 u=root |  PLAY RECAP ******************************************************************************************************************************
+2019-09-12 02:17:06,067 p=14344 u=root |  vpc.ansible                : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2019-09-12 02:19:34,177 p=14422 u=root |  ansible-playbook 2.8.0
+  config file = /ansible/ansible_aws/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.6/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.6.9 (default, Aug 21 2019, 00:27:28) [GCC 8.3.0]
+2019-09-12 02:19:34,178 p=14422 u=root |  Using /ansible/ansible_aws/ansible.cfg as config file
+2019-09-12 02:19:34,223 p=14422 u=root |  host_list declined parsing /ansible/ansible_aws/env/inventory as it did not pass it's verify_file() method
+2019-09-12 02:19:34,236 p=14422 u=root |  auto declined parsing /ansible/ansible_aws/env/inventory as it did not pass it's verify_file() method
+2019-09-12 02:19:34,245 p=14422 u=root |  [DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to allow bad characters in group names by default, this will 
+change, but still be user configurable on deprecation. This feature will be removed in version 2.10. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+2019-09-12 02:19:34,246 p=14422 u=root |   [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+2019-09-12 02:19:34,247 p=14422 u=root |  Parsed /ansible/ansible_aws/env/inventory inventory source with ini plugin
+2019-09-12 02:19:35,076 p=14422 u=root |  statically imported: /ansible/ansible_aws/roles/common/tasks/net_bases.yml
+2019-09-12 02:19:35,242 p=14422 u=root |  statically imported: /ansible/ansible_aws/roles/common/tasks/routing_rule.yml
+2019-09-12 02:19:35,264 p=14422 u=root |  statically imported: /ansible/ansible_aws/roles/common/tasks/rollingvms.yml
+2019-09-12 02:19:35,663 p=14422 u=root |  PLAYBOOK: aws.yml ***********************************************************************************************************************
+2019-09-12 02:19:35,663 p=14422 u=root |  1 plays in aws.yml
+2019-09-12 02:19:35,685 p=14422 u=root |  PLAY [vpc] ******************************************************************************************************************************
+2019-09-12 02:19:35,727 p=14422 u=root |  TASK [Gathering Facts] ******************************************************************************************************************
+2019-09-12 02:19:35,728 p=14422 u=root |  task path: /ansible/ansible_aws/aws.yml:2
+2019-09-12 02:19:35,743 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:19:35,743 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:19:35,748 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254775.7426007-13582204317860 `" && echo ansible-tmp-1568254775.7426007-13582204317860="` echo /root/.ansible/tmp/ansible-tmp-1568254775.7426007-13582204317860 `" ) && sleep 0'
+2019-09-12 02:19:36,133 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/system/setup.py
+2019-09-12 02:19:36,134 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmp84nmk46a TO /root/.ansible/tmp/ansible-tmp-1568254775.7426007-13582204317860/AnsiballZ_setup.py
+2019-09-12 02:19:36,136 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254775.7426007-13582204317860/ /root/.ansible/tmp/ansible-tmp-1568254775.7426007-13582204317860/AnsiballZ_setup.py && sleep 0'
+2019-09-12 02:19:36,141 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254775.7426007-13582204317860/AnsiballZ_setup.py && sleep 0'
+2019-09-12 02:19:36,609 p=14422 u=root |  ok: [vpc.ansible] => {
+    "ansible_facts": {
+        "ansible_all_ipv4_addresses": [
+            "172.17.0.2"
+        ],
+        "ansible_all_ipv6_addresses": [],
+        "ansible_apparmor": {
+            "status": "disabled"
+        },
+        "ansible_architecture": "x86_64",
+        "ansible_bios_date": "01/30/2019",
+        "ansible_bios_version": "Hyper-V UEFI Release v4.0",
+        "ansible_cmdline": {
+            "BOOT_IMAGE": "/boot/kernel",
+            "console": "ttyS1",
+            "page_poison": "1",
+            "panic": "1",
+            "root": "/dev/sr0",
+            "text": true,
+            "vsyscall": "emulate"
+        },
+        "ansible_date_time": {
+            "date": "2019-09-12",
+            "day": "12",
+            "epoch": "1568254776",
+            "hour": "02",
+            "iso8601": "2019-09-12T02:19:36Z",
+            "iso8601_basic": "20190912T021936368465",
+            "iso8601_basic_short": "20190912T021936",
+            "iso8601_micro": "2019-09-12T02:19:36.368519Z",
+            "minute": "19",
+            "month": "09",
+            "second": "36",
+            "time": "02:19:36",
+            "tz": "UTC",
+            "tz_offset": "+0000",
+            "weekday": "Thursday",
+            "weekday_number": "4",
+            "weeknumber": "36",
+            "year": "2019"
+        },
+        "ansible_default_ipv4": {
+            "address": "172.17.0.2",
+            "alias": "eth0",
+            "broadcast": "172.17.255.255",
+            "gateway": "172.17.0.1",
+            "interface": "eth0",
+            "macaddress": "02:42:ac:11:00:02",
+            "mtu": 1500,
+            "netmask": "255.255.0.0",
+            "network": "172.17.0.0",
+            "type": "ether"
+        },
+        "ansible_default_ipv6": {},
+        "ansible_device_links": {
+            "ids": {},
+            "labels": {},
+            "masters": {},
+            "uuids": {}
+        },
+        "ansible_devices": {
+            "loop0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop1": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop2": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop3": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop4": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop5": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop6": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "loop7": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd1": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd10": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd11": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd12": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd13": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd14": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd15": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd2": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd3": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd4": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd5": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd6": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd7": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd8": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nbd9": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": "0",
+                "sectorsize": "512",
+                "size": "0.00 Bytes",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "sda": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Virtual Disk",
+                "partitions": {
+                    "sda1": {
+                        "holders": [],
+                        "links": {
+                            "ids": [],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": []
+                        },
+                        "sectors": "124997952",
+                        "sectorsize": 512,
+                        "size": "59.60 GB",
+                        "start": "2048",
+                        "uuid": null
+                    }
+                },
+                "removable": "0",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "deadline",
+                "sectors": "125000000",
+                "sectorsize": "512",
+                "size": "59.60 GB",
+                "support_discard": "1048576",
+                "vendor": "Msft",
+                "virtual": 1
+            },
+            "sr0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Virtual DVD-ROM",
+                "partitions": {},
+                "removable": "1",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "deadline",
+                "sectors": "908632",
+                "sectorsize": "2048",
+                "size": "443.67 MB",
+                "support_discard": "0",
+                "vendor": "Msft",
+                "virtual": 1
+            },
+            "sr1": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Virtual DVD-ROM",
+                "partitions": {},
+                "removable": "1",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "deadline",
+                "sectors": "536",
+                "sectorsize": "2048",
+                "size": "268.00 KB",
+                "support_discard": "0",
+                "vendor": "Msft",
+                "virtual": 1
+            },
+            "sr2": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Virtual DVD-ROM",
+                "partitions": {},
+                "removable": "1",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "deadline",
+                "sectors": "1715712",
+                "sectorsize": "2048",
+                "size": "837.75 MB",
+                "support_discard": "0",
+                "vendor": "Msft",
+                "virtual": 1
+            }
+        },
+        "ansible_distribution": "Alpine",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/alpine-release",
+        "ansible_distribution_file_variety": "Alpine",
+        "ansible_distribution_major_version": "3",
+        "ansible_distribution_release": "NA",
+        "ansible_distribution_version": "3.10.2",
+        "ansible_dns": {
+            "nameservers": [
+                "192.168.65.1"
+            ]
+        },
+        "ansible_domain": "",
+        "ansible_effective_group_id": 0,
+        "ansible_effective_user_id": 0,
+        "ansible_env": {
+            "ANSIBLE_CONFIG": "ansible.cfg",
+            "AWS_ACCESS_KEY_ID": "AKIAJJ3OJARGQYWAB2XA",
+            "AWS_REGION": "us-east-1",
+            "AWS_SECRET_ACCESS_KEY": "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",
+            "GPG_KEY": "0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D",
+            "HOME": "/root",
+            "HOSTNAME": "5c7a12f96400",
+            "LANG": "C.UTF-8",
+            "LIBRARY_PATH": "/lib:/usr/lib",
+            "OLDPWD": "/ansible",
+            "PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "PWD": "/ansible/ansible_aws",
+            "PYTHON_GET_PIP_SHA256": "57e3643ff19f018f8a00dfaa6b7e4620e3c1a7a2171fd218425366ec006b3bfe",
+            "PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/309a56c5fd94bd1134053a541cb4657a4e47e09d/get-pip.py",
+            "PYTHON_PIP_VERSION": "19.2.3",
+            "PYTHON_VERSION": "3.6.9",
+            "SHLVL": "3",
+            "TERM": "xterm"
+        },
+        "ansible_eth0": {
+            "active": true,
+            "device": "eth0",
+            "ipv4": {
+                "address": "172.17.0.2",
+                "broadcast": "172.17.255.255",
+                "netmask": "255.255.0.0",
+                "network": "172.17.0.0"
+            },
+            "macaddress": "02:42:ac:11:00:02",
+            "mtu": 1500,
+            "promisc": false,
+            "speed": 10000,
+            "type": "ether"
+        },
+        "ansible_fibre_channel_wwn": [],
+        "ansible_fips": false,
+        "ansible_form_factor": "Desktop",
+        "ansible_fqdn": "5c7a12f96400",
+        "ansible_hostname": "5c7a12f96400",
+        "ansible_hostnqn": "",
+        "ansible_interfaces": [
+            "tunl0",
+            "eth0",
+            "ip6tnl0",
+            "lo"
+        ],
+        "ansible_ip6tnl0": {
+            "active": false,
+            "device": "ip6tnl0",
+            "macaddress": "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00",
+            "mtu": 1452,
+            "promisc": false,
+            "type": "unknown"
+        },
+        "ansible_is_chroot": false,
+        "ansible_iscsi_iqn": "",
+        "ansible_kernel": "4.9.184-linuxkit",
+        "ansible_lo": {
+            "active": true,
+            "device": "lo",
+            "ipv4": {
+                "address": "127.0.0.1",
+                "broadcast": "host",
+                "netmask": "255.0.0.0",
+                "network": "127.0.0.0"
+            },
+            "mtu": 65536,
+            "promisc": false,
+            "type": "loopback"
+        },
+        "ansible_local": {},
+        "ansible_lsb": {},
+        "ansible_machine": "x86_64",
+        "ansible_memfree_mb": 174,
+        "ansible_memory_mb": {
+            "nocache": {
+                "free": 1469,
+                "used": 530
+            },
+            "real": {
+                "free": 174,
+                "total": 1999,
+                "used": 1825
+            },
+            "swap": {
+                "cached": 0,
+                "free": 1023,
+                "total": 1023,
+                "used": 0
+            }
+        },
+        "ansible_memtotal_mb": 1999,
+        "ansible_mounts": [
+            {
+                "block_available": 52835370,
+                "block_size": 4096,
+                "block_total": 71679743,
+                "block_used": 18844373,
+                "device": "//10.0.75.1/D",
+                "fstype": "cifs",
+                "inode_available": 0,
+                "inode_total": 0,
+                "inode_used": 0,
+                "mount": "/ansible",
+                "options": "rw,relatime,vers=3.02,sec=ntlmsspi,cache=strict,username=tkhoang,domain=AAVN,uid=0,noforceuid,gid=0,noforcegid,addr=10.0.75.1,file_mode=0755,dir_mode=0777,iocharset=utf8,nounix,mapposix,nobrl,mfsymlinks,noperm,rsize=1048576,wsize=1048576,echo_interval=60,actimeo=1",
+                "size_available": 216413675520,
+                "size_total": 293600227328,
+                "uuid": "N/A"
+            },
+            {
+                "block_available": 14096389,
+                "block_size": 4096,
+                "block_total": 15313913,
+                "block_used": 1217524,
+                "device": "/dev/sda1",
+                "fstype": "ext4",
+                "inode_available": 3882043,
+                "inode_total": 3907584,
+                "inode_used": 25541,
+                "mount": "/etc/resolv.conf",
+                "options": "rw,relatime,data=ordered",
+                "size_available": 57738809344,
+                "size_total": 62725787648,
+                "uuid": "N/A"
+            },
+            {
+                "block_available": 14096389,
+                "block_size": 4096,
+                "block_total": 15313913,
+                "block_used": 1217524,
+                "device": "/dev/sda1",
+                "fstype": "ext4",
+                "inode_available": 3882043,
+                "inode_total": 3907584,
+                "inode_used": 25541,
+                "mount": "/etc/hostname",
+                "options": "rw,relatime,data=ordered",
+                "size_available": 57738809344,
+                "size_total": 62725787648,
+                "uuid": "N/A"
+            },
+            {
+                "block_available": 14096389,
+                "block_size": 4096,
+                "block_total": 15313913,
+                "block_used": 1217524,
+                "device": "/dev/sda1",
+                "fstype": "ext4",
+                "inode_available": 3882043,
+                "inode_total": 3907584,
+                "inode_used": 25541,
+                "mount": "/etc/hosts",
+                "options": "rw,relatime,data=ordered",
+                "size_available": 57738809344,
+                "size_total": 62725787648,
+                "uuid": "N/A"
+            }
+        ],
+        "ansible_nodename": "5c7a12f96400",
+        "ansible_os_family": "Alpine",
+        "ansible_pkg_mgr": "apk",
+        "ansible_proc_cmdline": {
+            "BOOT_IMAGE": "/boot/kernel",
+            "console": [
+                "ttyS0",
+                "ttyS1"
+            ],
+            "page_poison": "1",
+            "panic": "1",
+            "root": "/dev/sr0",
+            "text": true,
+            "vsyscall": "emulate"
+        },
+        "ansible_processor": [
+            "0",
+            "GenuineIntel",
+            "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
+            "1",
+            "GenuineIntel",
+            "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz"
+        ],
+        "ansible_processor_cores": 1,
+        "ansible_processor_count": 1,
+        "ansible_processor_threads_per_core": 2,
+        "ansible_processor_vcpus": 2,
+        "ansible_product_name": "Virtual Machine",
+        "ansible_product_serial": "1356-7680-6723-9352-1868-8605-82",
+        "ansible_product_uuid": "006A72F6-3244-4AF9-A379-9FE35EDF6BA5",
+        "ansible_product_version": "Hyper-V UEFI Release v4.0",
+        "ansible_python": {
+            "executable": "/usr/local/bin/python",
+            "has_sslcontext": true,
+            "type": "cpython",
+            "version": {
+                "major": 3,
+                "micro": 9,
+                "minor": 6,
+                "releaselevel": "final",
+                "serial": 0
+            },
+            "version_info": [
+                3,
+                6,
+                9,
+                "final",
+                0
+            ]
+        },
+        "ansible_python_version": "3.6.9",
+        "ansible_real_group_id": 0,
+        "ansible_real_user_id": 0,
+        "ansible_selinux": {
+            "status": "Missing selinux Python library"
+        },
+        "ansible_selinux_python_present": false,
+        "ansible_service_mgr": "sysvinit",
+        "ansible_swapfree_mb": 1023,
+        "ansible_swaptotal_mb": 1023,
+        "ansible_system": "Linux",
+        "ansible_system_capabilities": [
+            "cap_chown",
+            "cap_dac_override",
+            "cap_fowner",
+            "cap_fsetid",
+            "cap_kill",
+            "cap_setgid",
+            "cap_setuid",
+            "cap_setpcap",
+            "cap_net_bind_service",
+            "cap_net_raw",
+            "cap_sys_chroot",
+            "cap_mknod",
+            "cap_audit_write",
+            "cap_setfcap+eip"
+        ],
+        "ansible_system_capabilities_enforced": "True",
+        "ansible_system_vendor": "Microsoft Corporation",
+        "ansible_tunl0": {
+            "active": false,
+            "device": "tunl0",
+            "macaddress": "00:00:00:00",
+            "mtu": 1480,
+            "promisc": false,
+            "type": "unknown"
+        },
+        "ansible_uptime_seconds": 71714,
+        "ansible_user_dir": "/root",
+        "ansible_user_gecos": "root",
+        "ansible_user_gid": 0,
+        "ansible_user_id": "root",
+        "ansible_user_shell": "/bin/ash",
+        "ansible_user_uid": 0,
+        "ansible_userspace_architecture": "x86_64",
+        "ansible_userspace_bits": "64",
+        "ansible_virtualization_role": "guest",
+        "ansible_virtualization_type": "docker",
+        "gather_subset": [
+            "all"
+        ],
+        "module_setup": true
+    },
+    "changed": false
+}
+2019-09-12 02:19:36,610 p=14422 u=root |  META: ran handlers
+2019-09-12 02:19:36,645 p=14422 u=root |  TASK [common : SSH key] *****************************************************************************************************************
+2019-09-12 02:19:36,646 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:2
+2019-09-12 02:19:36,689 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:19:36,690 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:19:36,699 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254776.6893957-248547602442526 `" && echo ansible-tmp-1568254776.6893957-248547602442526="` echo /root/.ansible/tmp/ansible-tmp-1568254776.6893957-248547602442526 `" ) && sleep 0'
+2019-09-12 02:19:36,891 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_key.py
+2019-09-12 02:19:36,892 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmp1bohfmwc TO /root/.ansible/tmp/ansible-tmp-1568254776.6893957-248547602442526/AnsiballZ_ec2_key.py
+2019-09-12 02:19:36,893 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254776.6893957-248547602442526/ /root/.ansible/tmp/ansible-tmp-1568254776.6893957-248547602442526/AnsiballZ_ec2_key.py && sleep 0'
+2019-09-12 02:19:36,900 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254776.6893957-248547602442526/AnsiballZ_ec2_key.py && sleep 0'
+2019-09-12 02:19:39,821 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254776.6893957-248547602442526/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:19:39,835 p=14422 u=root |  changed: [vpc.ansible] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "force": true,
+            "key_material": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400",
+            "name": "ansible-admin-key",
+            "profile": null,
+            "region": "us-east-1",
+            "security_token": null,
+            "state": "present",
+            "validate_certs": true,
+            "wait": false,
+            "wait_timeout": 300
+        }
+    },
+    "item": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH+Mh/sQtO6/OG38v6VX99gwguJAEegXekxglLNEbiS8uVtgJmR8eBF4vgxGqVhabRe5byQzpCerk5OwzhYI6sk4DStx+DAZdHWDuCKNpxvUD0bEJLHcE1R6lRgoKKgVFTbNqnKB9JE9fbUDw4kNthCOL6aE76WptoMVfRnDyTmPFD3Cy+kVRHpA8Ju5q7BlR91xO6+WXro02VKJ3oKBgrSZmFmcq8zR3QFrRk70kQ+odfaYNy9ibmqwTgGEfTlYOdV7Lntvas/hr2KCH3EyVuBTkvegOV7jfU2l0JhDLI6RwZizdhwRKhy47heoIRjUaYFKn2rzM5GwDOk9dPEqA0exZCH91FxRB3QjTZvxALZ8O4N7TkR7MnrC2rgSS+NeI2VZshd0d22vDQOEpCiAxj05nN/EQA1u1IY84OIwy3hrUCQpU/+2CRAt3Ie45P8pX3ycKVW2xUaa8NxmDb47uL/ovBbMP6Afrf0WQIsWqHrVHVaKG58ICedcpUf4mvkvE= root@5c7a12f96400",
+    "key": {
+        "fingerprint": "a7:f2:64:ee:1c:1d:71:6a:43:2f:20:78:0c:c8:08:df",
+        "name": "ansible-admin-key"
+    },
+    "msg": "key pair created"
+}
+2019-09-12 02:19:39,874 p=14422 u=root |  TASK [common : CREATE VPC INT] **********************************************************************************************************
+2019-09-12 02:19:39,875 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:12
+2019-09-12 02:19:39,897 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:19:39,898 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:19:39,903 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254779.8972204-110689942645292 `" && echo ansible-tmp-1568254779.8972204-110689942645292="` echo /root/.ansible/tmp/ansible-tmp-1568254779.8972204-110689942645292 `" ) && sleep 0'
+2019-09-12 02:19:40,104 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_net.py
+2019-09-12 02:19:40,105 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmp7_jbafsy TO /root/.ansible/tmp/ansible-tmp-1568254779.8972204-110689942645292/AnsiballZ_ec2_vpc_net.py
+2019-09-12 02:19:40,106 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254779.8972204-110689942645292/ /root/.ansible/tmp/ansible-tmp-1568254779.8972204-110689942645292/AnsiballZ_ec2_vpc_net.py && sleep 0'
+2019-09-12 02:19:40,111 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254779.8972204-110689942645292/AnsiballZ_ec2_vpc_net.py && sleep 0'
+2019-09-12 02:19:46,717 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254779.8972204-110689942645292/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:19:46,731 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "cidr_block": [
+                "192.168.0.0/16"
+            ],
+            "debug_botocore_endpoint_logs": false,
+            "dhcp_opts_id": null,
+            "dns_hostnames": true,
+            "dns_support": true,
+            "ec2_url": null,
+            "multi_ok": false,
+            "name": "inf-Int",
+            "profile": null,
+            "purge_cidrs": false,
+            "region": "us-east-1",
+            "security_token": null,
+            "state": "present",
+            "tags": null,
+            "tenancy": "default",
+            "validate_certs": true
+        }
+    },
+    "vpc": {
+        "cidr_block": "192.168.0.0/16",
+        "cidr_block_association_set": [
+            {
+                "association_id": "vpc-cidr-assoc-0a4e5ff8b1c2b3803",
+                "cidr_block": "192.168.0.0/16",
+                "cidr_block_state": {
+                    "state": "associated"
+                }
+            }
+        ],
+        "classic_link_enabled": false,
+        "dhcp_options_id": "dopt-008810bc0fecb3a5e",
+        "id": "vpc-01b4c519e12a8d6e7",
+        "instance_tenancy": "default",
+        "is_default": false,
+        "owner_id": "335010491497",
+        "state": "available",
+        "tags": {
+            "Name": "inf-Int"
+        }
+    }
+}
+2019-09-12 02:19:46,771 p=14422 u=root |  TASK [common : set fact: VPC_ID] ********************************************************************************************************
+2019-09-12 02:19:46,771 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:20
+2019-09-12 02:19:46,792 p=14422 u=root |  ok: [vpc.ansible] => {
+    "ansible_facts": {
+        "vpc_id": "vpc-01b4c519e12a8d6e7"
+    },
+    "changed": false
+}
+2019-09-12 02:19:46,830 p=14422 u=root |  TASK [common : Create Subnet Int] *******************************************************************************************************
+2019-09-12 02:19:46,830 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:24
+2019-09-12 02:19:46,850 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:19:46,850 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:19:46,855 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254786.8496487-62831452363375 `" && echo ansible-tmp-1568254786.8496487-62831452363375="` echo /root/.ansible/tmp/ansible-tmp-1568254786.8496487-62831452363375 `" ) && sleep 0'
+2019-09-12 02:19:47,049 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_subnet.py
+2019-09-12 02:19:47,049 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpgmx_6t32 TO /root/.ansible/tmp/ansible-tmp-1568254786.8496487-62831452363375/AnsiballZ_ec2_vpc_subnet.py
+2019-09-12 02:19:47,050 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254786.8496487-62831452363375/ /root/.ansible/tmp/ansible-tmp-1568254786.8496487-62831452363375/AnsiballZ_ec2_vpc_subnet.py && sleep 0'
+2019-09-12 02:19:47,055 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254786.8496487-62831452363375/AnsiballZ_ec2_vpc_subnet.py && sleep 0'
+2019-09-12 02:19:52,404 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254786.8496487-62831452363375/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:19:52,416 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "assign_instances_ipv6": false,
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "az": null,
+            "cidr": "192.168.100.0/24",
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "ipv6_cidr": "",
+            "map_public": false,
+            "profile": null,
+            "purge_tags": true,
+            "region": "us-east-1",
+            "security_token": null,
+            "state": "present",
+            "tags": {
+                "Name": "int-sub"
+            },
+            "validate_certs": true,
+            "vpc_id": "vpc-01b4c519e12a8d6e7",
+            "wait": true,
+            "wait_timeout": 300
+        }
+    },
+    "subnet": {
+        "assign_ipv6_address_on_creation": false,
+        "availability_zone": "us-east-1b",
+        "availability_zone_id": "use1-az2",
+        "available_ip_address_count": 251,
+        "cidr_block": "192.168.100.0/24",
+        "default_for_az": false,
+        "id": "subnet-0d7d8f96d030bdc91",
+        "ipv6_association_id": "",
+        "ipv6_cidr_block": "",
+        "ipv6_cidr_block_association_set": [],
+        "map_public_ip_on_launch": false,
+        "owner_id": "335010491497",
+        "state": "available",
+        "subnet_arn": "arn:aws:ec2:us-east-1:335010491497:subnet/subnet-0d7d8f96d030bdc91",
+        "tags": {
+            "Name": "int-sub"
+        },
+        "vpc_id": "vpc-01b4c519e12a8d6e7"
+    }
+}
+2019-09-12 02:19:52,455 p=14422 u=root |  TASK [common : Create VPC Ext] **********************************************************************************************************
+2019-09-12 02:19:52,455 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:41
+2019-09-12 02:19:52,475 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:19:52,476 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:19:52,481 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254792.4747095-199112217615714 `" && echo ansible-tmp-1568254792.4747095-199112217615714="` echo /root/.ansible/tmp/ansible-tmp-1568254792.4747095-199112217615714 `" ) && sleep 0'
+2019-09-12 02:19:52,487 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_net.py
+2019-09-12 02:19:52,488 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpua036e8f TO /root/.ansible/tmp/ansible-tmp-1568254792.4747095-199112217615714/AnsiballZ_ec2_vpc_net.py
+2019-09-12 02:19:52,489 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254792.4747095-199112217615714/ /root/.ansible/tmp/ansible-tmp-1568254792.4747095-199112217615714/AnsiballZ_ec2_vpc_net.py && sleep 0'
+2019-09-12 02:19:52,496 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254792.4747095-199112217615714/AnsiballZ_ec2_vpc_net.py && sleep 0'
+2019-09-12 02:20:00,163 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254792.4747095-199112217615714/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:00,176 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "cidr_block": [
+                "172.25.0.0/28"
+            ],
+            "debug_botocore_endpoint_logs": false,
+            "dhcp_opts_id": null,
+            "dns_hostnames": true,
+            "dns_support": true,
+            "ec2_url": null,
+            "multi_ok": false,
+            "name": "inf-Ext",
+            "profile": null,
+            "purge_cidrs": false,
+            "region": "us-east-1",
+            "security_token": null,
+            "state": "present",
+            "tags": null,
+            "tenancy": "default",
+            "validate_certs": true
+        }
+    },
+    "vpc": {
+        "cidr_block": "172.25.0.0/28",
+        "cidr_block_association_set": [
+            {
+                "association_id": "vpc-cidr-assoc-04b2f3944bb0ed2c8",
+                "cidr_block": "172.25.0.0/28",
+                "cidr_block_state": {
+                    "state": "associated"
+                }
+            }
+        ],
+        "classic_link_enabled": false,
+        "dhcp_options_id": "dopt-008810bc0fecb3a5e",
+        "id": "vpc-07e64fd4beae44d97",
+        "instance_tenancy": "default",
+        "is_default": false,
+        "owner_id": "335010491497",
+        "state": "available",
+        "tags": {
+            "Name": "inf-Ext"
+        }
+    }
+}
+2019-09-12 02:20:00,216 p=14422 u=root |  TASK [common : Create Subnet Ext] *******************************************************************************************************
+2019-09-12 02:20:00,217 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:49
+2019-09-12 02:20:00,235 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:00,236 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:00,241 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254800.2349887-4641231206465 `" && echo ansible-tmp-1568254800.2349887-4641231206465="` echo /root/.ansible/tmp/ansible-tmp-1568254800.2349887-4641231206465 `" ) && sleep 0'
+2019-09-12 02:20:00,248 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_subnet.py
+2019-09-12 02:20:00,248 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmp_21aaz7s TO /root/.ansible/tmp/ansible-tmp-1568254800.2349887-4641231206465/AnsiballZ_ec2_vpc_subnet.py
+2019-09-12 02:20:00,249 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254800.2349887-4641231206465/ /root/.ansible/tmp/ansible-tmp-1568254800.2349887-4641231206465/AnsiballZ_ec2_vpc_subnet.py && sleep 0'
+2019-09-12 02:20:00,254 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254800.2349887-4641231206465/AnsiballZ_ec2_vpc_subnet.py && sleep 0'
+2019-09-12 02:20:05,085 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254800.2349887-4641231206465/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:05,107 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "assign_instances_ipv6": false,
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "az": null,
+            "cidr": "172.25.0.0/28",
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "ipv6_cidr": "",
+            "map_public": false,
+            "profile": null,
+            "purge_tags": true,
+            "region": "us-east-1",
+            "resource_tags": {
+                "Name": "ext-sub"
+            },
+            "security_token": null,
+            "state": "present",
+            "tags": {
+                "Name": "ext-sub"
+            },
+            "validate_certs": true,
+            "vpc_id": "vpc-07e64fd4beae44d97",
+            "wait": true,
+            "wait_timeout": 300
+        }
+    },
+    "subnet": {
+        "assign_ipv6_address_on_creation": false,
+        "availability_zone": "us-east-1b",
+        "availability_zone_id": "use1-az2",
+        "available_ip_address_count": 11,
+        "cidr_block": "172.25.0.0/28",
+        "default_for_az": false,
+        "id": "subnet-0a9ac59c5102163fc",
+        "ipv6_association_id": "",
+        "ipv6_cidr_block": "",
+        "ipv6_cidr_block_association_set": [],
+        "map_public_ip_on_launch": false,
+        "owner_id": "335010491497",
+        "state": "available",
+        "subnet_arn": "arn:aws:ec2:us-east-1:335010491497:subnet/subnet-0a9ac59c5102163fc",
+        "tags": {
+            "Name": "ext-sub"
+        },
+        "vpc_id": "vpc-07e64fd4beae44d97"
+    }
+}
+2019-09-12 02:20:05,144 p=14422 u=root |  TASK [common : Create VPC Peering] ******************************************************************************************************
+2019-09-12 02:20:05,144 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:60
+2019-09-12 02:20:05,164 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:05,165 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:05,170 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254805.163033-117139396256826 `" && echo ansible-tmp-1568254805.163033-117139396256826="` echo /root/.ansible/tmp/ansible-tmp-1568254805.163033-117139396256826 `" ) && sleep 0'
+2019-09-12 02:20:05,360 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_peer.py
+2019-09-12 02:20:05,361 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmped8rlxwu TO /root/.ansible/tmp/ansible-tmp-1568254805.163033-117139396256826/AnsiballZ_ec2_vpc_peer.py
+2019-09-12 02:20:05,361 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254805.163033-117139396256826/ /root/.ansible/tmp/ansible-tmp-1568254805.163033-117139396256826/AnsiballZ_ec2_vpc_peer.py && sleep 0'
+2019-09-12 02:20:05,366 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254805.163033-117139396256826/AnsiballZ_ec2_vpc_peer.py && sleep 0'
+2019-09-12 02:20:07,586 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254805.163033-117139396256826/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:07,607 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "peer_owner_id": null,
+            "peer_region": null,
+            "peer_vpc_id": "vpc-07e64fd4beae44d97",
+            "peering_id": null,
+            "profile": null,
+            "region": "us-east-1",
+            "security_token": null,
+            "state": "present",
+            "tags": null,
+            "validate_certs": true,
+            "vpc_id": "vpc-01b4c519e12a8d6e7"
+        }
+    },
+    "peering_id": "pcx-05616e983e6743035"
+}
+2019-09-12 02:20:07,672 p=14422 u=root |  TASK [common : Accept VPC Peering] ******************************************************************************************************
+2019-09-12 02:20:07,673 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:69
+2019-09-12 02:20:07,702 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:07,702 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:07,711 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254807.7010272-194546964687599 `" && echo ansible-tmp-1568254807.7010272-194546964687599="` echo /root/.ansible/tmp/ansible-tmp-1568254807.7010272-194546964687599 `" ) && sleep 0'
+2019-09-12 02:20:07,720 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_peer.py
+2019-09-12 02:20:07,721 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpy4pmkh4j TO /root/.ansible/tmp/ansible-tmp-1568254807.7010272-194546964687599/AnsiballZ_ec2_vpc_peer.py
+2019-09-12 02:20:07,723 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254807.7010272-194546964687599/ /root/.ansible/tmp/ansible-tmp-1568254807.7010272-194546964687599/AnsiballZ_ec2_vpc_peer.py && sleep 0'
+2019-09-12 02:20:07,729 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254807.7010272-194546964687599/AnsiballZ_ec2_vpc_peer.py && sleep 0'
+2019-09-12 02:20:10,145 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254807.7010272-194546964687599/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:10,153 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "peer_owner_id": null,
+            "peer_region": null,
+            "peer_vpc_id": null,
+            "peering_id": "pcx-05616e983e6743035",
+            "profile": null,
+            "region": "us-east-1",
+            "security_token": null,
+            "state": "accept",
+            "tags": null,
+            "validate_certs": true,
+            "vpc_id": null
+        }
+    },
+    "peering_id": "pcx-05616e983e6743035"
+}
+2019-09-12 02:20:10,191 p=14422 u=root |  TASK [common : Create internet GateWay] *************************************************************************************************
+2019-09-12 02:20:10,191 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/net_bases.yml:76
+2019-09-12 02:20:10,210 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:10,210 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:10,214 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254810.209751-24667194517173 `" && echo ansible-tmp-1568254810.209751-24667194517173="` echo /root/.ansible/tmp/ansible-tmp-1568254810.209751-24667194517173 `" ) && sleep 0'
+2019-09-12 02:20:10,397 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_igw.py
+2019-09-12 02:20:10,398 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmp5b4oaffg TO /root/.ansible/tmp/ansible-tmp-1568254810.209751-24667194517173/AnsiballZ_ec2_vpc_igw.py
+2019-09-12 02:20:10,399 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254810.209751-24667194517173/ /root/.ansible/tmp/ansible-tmp-1568254810.209751-24667194517173/AnsiballZ_ec2_vpc_igw.py && sleep 0'
+2019-09-12 02:20:10,403 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254810.209751-24667194517173/AnsiballZ_ec2_vpc_igw.py && sleep 0'
+2019-09-12 02:20:13,237 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254810.209751-24667194517173/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:13,247 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "gateway_id": "igw-079035037ad72b67b",
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "profile": null,
+            "region": "us-east-1",
+            "security_token": null,
+            "state": "present",
+            "tags": {},
+            "validate_certs": true,
+            "vpc_id": "vpc-07e64fd4beae44d97"
+        }
+    },
+    "tags": {},
+    "vpc_id": "vpc-07e64fd4beae44d97"
+}
+2019-09-12 02:20:13,286 p=14422 u=root |  TASK [common : Gather Route Tables] *****************************************************************************************************
+2019-09-12 02:20:13,287 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/routing_rule.yml:3
+2019-09-12 02:20:13,307 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:13,307 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:13,311 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254813.3065467-40367596427977 `" && echo ansible-tmp-1568254813.3065467-40367596427977="` echo /root/.ansible/tmp/ansible-tmp-1568254813.3065467-40367596427977 `" ) && sleep 0'
+2019-09-12 02:20:13,487 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_route_table_facts.py
+2019-09-12 02:20:13,488 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpqspt9ucv TO /root/.ansible/tmp/ansible-tmp-1568254813.3065467-40367596427977/AnsiballZ_ec2_vpc_route_table_facts.py
+2019-09-12 02:20:13,488 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254813.3065467-40367596427977/ /root/.ansible/tmp/ansible-tmp-1568254813.3065467-40367596427977/AnsiballZ_ec2_vpc_route_table_facts.py && sleep 0'
+2019-09-12 02:20:13,493 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254813.3065467-40367596427977/AnsiballZ_ec2_vpc_route_table_facts.py && sleep 0'
+2019-09-12 02:20:17,741 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254813.3065467-40367596427977/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:17,754 p=14422 u=root |  ok: [vpc.ansible] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "filters": {
+                "vpc_id": "vpc-01b4c519e12a8d6e7"
+            },
+            "profile": null,
+            "region": "us-east-1",
+            "security_token": null,
+            "validate_certs": true
+        }
+    },
+    "route_tables": [
+        {
+            "associations": [
+                {
+                    "id": "rtbassoc-083409e62320ed45f",
+                    "main": true,
+                    "route_table_id": "rtb-0d84826e4eb7bebc2",
+                    "subnet_id": null
+                }
+            ],
+            "id": "rtb-0d84826e4eb7bebc2",
+            "routes": [
+                {
+                    "destination_cidr_block": "192.168.0.0/16",
+                    "gateway_id": "local",
+                    "instance_id": null,
+                    "interface_id": null,
+                    "origin": "CreateRouteTable",
+                    "state": "active",
+                    "vpc_peering_connection_id": null
+                }
+            ],
+            "tags": {},
+            "vpc_id": "vpc-01b4c519e12a8d6e7"
+        }
+    ]
+}
+2019-09-12 02:20:17,793 p=14422 u=root |  TASK [common : Set Route Out Int VPC to Ext] ********************************************************************************************
+2019-09-12 02:20:17,793 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/routing_rule.yml:12
+2019-09-12 02:20:17,817 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:17,818 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:17,823 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254817.8166633-34909132410811 `" && echo ansible-tmp-1568254817.8166633-34909132410811="` echo /root/.ansible/tmp/ansible-tmp-1568254817.8166633-34909132410811 `" ) && sleep 0'
+2019-09-12 02:20:18,021 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_route_table.py
+2019-09-12 02:20:18,021 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpr5zhxncz TO /root/.ansible/tmp/ansible-tmp-1568254817.8166633-34909132410811/AnsiballZ_ec2_vpc_route_table.py
+2019-09-12 02:20:18,022 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254817.8166633-34909132410811/ /root/.ansible/tmp/ansible-tmp-1568254817.8166633-34909132410811/AnsiballZ_ec2_vpc_route_table.py && sleep 0'
+2019-09-12 02:20:18,027 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254817.8166633-34909132410811/AnsiballZ_ec2_vpc_route_table.py && sleep 0'
+2019-09-12 02:20:28,314 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254817.8166633-34909132410811/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:28,328 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "lookup": "tag",
+            "profile": null,
+            "propagating_vgw_ids": null,
+            "purge_routes": true,
+            "purge_subnets": true,
+            "purge_tags": false,
+            "region": "us-east-1",
+            "route_table_id": "rtb-0d84826e4eb7bebc2",
+            "routes": [
+                {
+                    "destination_cidr_block": "172.25.0.0/28",
+                    "vpc_peering_connection_id": "pcx-05616e983e6743035"
+                }
+            ],
+            "security_token": null,
+            "state": "present",
+            "subnets": [
+                "subnet-0d7d8f96d030bdc91"
+            ],
+            "tags": {
+                "Name": "inf-Int"
+            },
+            "validate_certs": true,
+            "vpc_id": "vpc-01b4c519e12a8d6e7"
+        }
+    },
+    "route_table": {
+        "associations": [
+            {
+                "main": false,
+                "route_table_association_id": "rtbassoc-0666641f4ee124ee8",
+                "route_table_id": "rtb-06e06d2826acf3185",
+                "subnet_id": "subnet-0d7d8f96d030bdc91"
+            }
+        ],
+        "id": "rtb-06e06d2826acf3185",
+        "owner_id": "335010491497",
+        "propagating_vgws": [],
+        "route_table_id": "rtb-06e06d2826acf3185",
+        "routes": [
+            {
+                "destination_cidr_block": "172.25.0.0/28",
+                "origin": "CreateRoute",
+                "state": "active",
+                "vpc_peering_connection_id": "pcx-05616e983e6743035"
+            },
+            {
+                "destination_cidr_block": "192.168.0.0/16",
+                "gateway_id": "local",
+                "origin": "CreateRouteTable",
+                "state": "active"
+            }
+        ],
+        "tags": {
+            "Name": "inf-Int"
+        },
+        "vpc_id": "vpc-01b4c519e12a8d6e7"
+    }
+}
+2019-09-12 02:20:28,366 p=14422 u=root |  TASK [common : set route in to external VPC] ********************************************************************************************
+2019-09-12 02:20:28,367 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/routing_rule.yml:29
+2019-09-12 02:20:28,392 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:28,392 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:28,397 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254828.38889-244936339011257 `" && echo ansible-tmp-1568254828.38889-244936339011257="` echo /root/.ansible/tmp/ansible-tmp-1568254828.38889-244936339011257 `" ) && sleep 0'
+2019-09-12 02:20:28,405 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_vpc_route_table.py
+2019-09-12 02:20:28,406 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpwds65ei6 TO /root/.ansible/tmp/ansible-tmp-1568254828.38889-244936339011257/AnsiballZ_ec2_vpc_route_table.py
+2019-09-12 02:20:28,406 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254828.38889-244936339011257/ /root/.ansible/tmp/ansible-tmp-1568254828.38889-244936339011257/AnsiballZ_ec2_vpc_route_table.py && sleep 0'
+2019-09-12 02:20:28,411 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254828.38889-244936339011257/AnsiballZ_ec2_vpc_route_table.py && sleep 0'
+2019-09-12 02:20:40,152 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254828.38889-244936339011257/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:40,164 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "ec2_url": null,
+            "lookup": "tag",
+            "profile": null,
+            "propagating_vgw_ids": null,
+            "purge_routes": true,
+            "purge_subnets": true,
+            "purge_tags": false,
+            "region": "us-east-1",
+            "route_table_id": null,
+            "routes": [
+                {
+                    "destination_cidr_block": "192.168.0.0/16",
+                    "vpc_peering_connection_id": "pcx-05616e983e6743035"
+                },
+                {
+                    "destination_cidr_block": "0.0.0.0/0",
+                    "gateway_id": "igw-079035037ad72b67b"
+                }
+            ],
+            "security_token": null,
+            "state": "present",
+            "subnets": [
+                "subnet-0a9ac59c5102163fc"
+            ],
+            "tags": {
+                "Name": "inf-Ext"
+            },
+            "validate_certs": true,
+            "vpc_id": "vpc-07e64fd4beae44d97"
+        }
+    },
+    "route_table": {
+        "associations": [
+            {
+                "main": false,
+                "route_table_association_id": "rtbassoc-029f432681e505c5e",
+                "route_table_id": "rtb-0a6ab36f240b4e37e",
+                "subnet_id": "subnet-0a9ac59c5102163fc"
+            }
+        ],
+        "id": "rtb-0a6ab36f240b4e37e",
+        "owner_id": "335010491497",
+        "propagating_vgws": [],
+        "route_table_id": "rtb-0a6ab36f240b4e37e",
+        "routes": [
+            {
+                "destination_cidr_block": "172.25.0.0/28",
+                "gateway_id": "local",
+                "origin": "CreateRouteTable",
+                "state": "active"
+            },
+            {
+                "destination_cidr_block": "192.168.0.0/16",
+                "origin": "CreateRoute",
+                "state": "active",
+                "vpc_peering_connection_id": "pcx-05616e983e6743035"
+            },
+            {
+                "destination_cidr_block": "0.0.0.0/0",
+                "gateway_id": "igw-079035037ad72b67b",
+                "origin": "CreateRoute",
+                "state": "active"
+            }
+        ],
+        "tags": {
+            "Name": "inf-Ext"
+        },
+        "vpc_id": "vpc-07e64fd4beae44d97"
+    }
+}
+2019-09-12 02:20:40,203 p=14422 u=root |  TASK [common : internal Secgroup] *******************************************************************************************************
+2019-09-12 02:20:40,204 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/routing_rule.yml:46
+2019-09-12 02:20:40,225 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:40,226 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:40,232 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254840.2251232-47165516484529 `" && echo ansible-tmp-1568254840.2251232-47165516484529="` echo /root/.ansible/tmp/ansible-tmp-1568254840.2251232-47165516484529 `" ) && sleep 0'
+2019-09-12 02:20:40,451 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_group.py
+2019-09-12 02:20:40,451 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpf2mtizg6 TO /root/.ansible/tmp/ansible-tmp-1568254840.2251232-47165516484529/AnsiballZ_ec2_group.py
+2019-09-12 02:20:40,452 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254840.2251232-47165516484529/ /root/.ansible/tmp/ansible-tmp-1568254840.2251232-47165516484529/AnsiballZ_ec2_group.py && sleep 0'
+2019-09-12 02:20:40,457 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254840.2251232-47165516484529/AnsiballZ_ec2_group.py && sleep 0'
+2019-09-12 02:20:49,637 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254840.2251232-47165516484529/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:49,651 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "description": "Ansible-Generated internal rule",
+    "group_id": "sg-0e158614109d1d217",
+    "group_name": "infintsecgroup",
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "description": "Ansible-Generated internal rule",
+            "ec2_url": null,
+            "group_id": null,
+            "name": "infintsecgroup",
+            "profile": null,
+            "purge_rules": true,
+            "purge_rules_egress": true,
+            "purge_tags": true,
+            "region": "us-east-1",
+            "rules": [
+                {
+                    "cidr_ip": "0.0.0.0/0",
+                    "from_port": 12345,
+                    "proto": "udp",
+                    "to_port": 12345
+                },
+                {
+                    "cidr_ip": "0.0.0.0/0",
+                    "from_port": 22,
+                    "proto": "tcp",
+                    "to_port": 22
+                },
+                {
+                    "cidr_ip": "0.0.0.0/0",
+                    "from_port": 443,
+                    "proto": "tcp",
+                    "to_port": 443
+                }
+            ],
+            "rules_egress": null,
+            "security_token": null,
+            "state": "present",
+            "tags": null,
+            "validate_certs": true,
+            "vpc_id": "vpc-01b4c519e12a8d6e7"
+        }
+    },
+    "ip_permissions": [
+        {
+            "from_port": 12345,
+            "ip_protocol": "udp",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "0.0.0.0/0"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 12345,
+            "user_id_group_pairs": []
+        },
+        {
+            "from_port": 22,
+            "ip_protocol": "tcp",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "0.0.0.0/0"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 22,
+            "user_id_group_pairs": []
+        },
+        {
+            "from_port": 443,
+            "ip_protocol": "tcp",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "0.0.0.0/0"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 443,
+            "user_id_group_pairs": []
+        }
+    ],
+    "ip_permissions_egress": [
+        {
+            "ip_protocol": "-1",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "0.0.0.0/0"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "user_id_group_pairs": []
+        }
+    ],
+    "owner_id": "335010491497",
+    "tags": {},
+    "vpc_id": "vpc-01b4c519e12a8d6e7"
+}
+2019-09-12 02:20:49,691 p=14422 u=root |  TASK [common : External Secgroup] *******************************************************************************************************
+2019-09-12 02:20:49,692 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/routing_rule.yml:69
+2019-09-12 02:20:49,715 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:49,716 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:49,720 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254849.7152548-184446900559015 `" && echo ansible-tmp-1568254849.7152548-184446900559015="` echo /root/.ansible/tmp/ansible-tmp-1568254849.7152548-184446900559015 `" ) && sleep 0'
+2019-09-12 02:20:49,729 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2_group.py
+2019-09-12 02:20:49,730 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmp2trj0l04 TO /root/.ansible/tmp/ansible-tmp-1568254849.7152548-184446900559015/AnsiballZ_ec2_group.py
+2019-09-12 02:20:49,731 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254849.7152548-184446900559015/ /root/.ansible/tmp/ansible-tmp-1568254849.7152548-184446900559015/AnsiballZ_ec2_group.py && sleep 0'
+2019-09-12 02:20:49,736 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254849.7152548-184446900559015/AnsiballZ_ec2_group.py && sleep 0'
+2019-09-12 02:20:59,743 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254849.7152548-184446900559015/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:20:59,757 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "description": "Ansible-Generated External Rules",
+    "group_id": "sg-020180afe56b70139",
+    "group_name": "infextsecgroup",
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "debug_botocore_endpoint_logs": false,
+            "description": "Ansible-Generated External Rules",
+            "ec2_url": null,
+            "group_id": null,
+            "name": "infextsecgroup",
+            "profile": null,
+            "purge_rules": true,
+            "purge_rules_egress": true,
+            "purge_tags": true,
+            "region": "us-east-1",
+            "rules": [
+                {
+                    "cidr_ip": "0.0.0.0/0",
+                    "from_port": 12345,
+                    "proto": "udp",
+                    "to_port": 12345
+                },
+                {
+                    "cidr_ip": "0.0.0.0/0",
+                    "from_port": 22,
+                    "proto": "tcp",
+                    "to_port": 22
+                },
+                {
+                    "cidr_ip": "0.0.0.0/0",
+                    "from_port": 443,
+                    "proto": "tcp",
+                    "to_port": 443
+                },
+                {
+                    "cidr_ip": "192.168.0.0/16",
+                    "from_port": 3128,
+                    "proto": "tcp",
+                    "to_port": 3128
+                }
+            ],
+            "rules_egress": null,
+            "security_token": null,
+            "state": "present",
+            "tags": null,
+            "validate_certs": true,
+            "vpc_id": "vpc-07e64fd4beae44d97"
+        }
+    },
+    "ip_permissions": [
+        {
+            "from_port": 12345,
+            "ip_protocol": "udp",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "0.0.0.0/0"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 12345,
+            "user_id_group_pairs": []
+        },
+        {
+            "from_port": 22,
+            "ip_protocol": "tcp",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "0.0.0.0/0"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 22,
+            "user_id_group_pairs": []
+        },
+        {
+            "from_port": 3128,
+            "ip_protocol": "tcp",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "192.168.0.0/16"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 3128,
+            "user_id_group_pairs": []
+        },
+        {
+            "from_port": 443,
+            "ip_protocol": "tcp",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "0.0.0.0/0"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 443,
+            "user_id_group_pairs": []
+        }
+    ],
+    "ip_permissions_egress": [
+        {
+            "ip_protocol": "-1",
+            "ip_ranges": [
+                {
+                    "cidr_ip": "0.0.0.0/0"
+                }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "user_id_group_pairs": []
+        }
+    ],
+    "owner_id": "335010491497",
+    "tags": {},
+    "vpc_id": "vpc-07e64fd4beae44d97"
+}
+2019-09-12 02:20:59,795 p=14422 u=root |  TASK [common : Deploy Backend] **********************************************************************************************************
+2019-09-12 02:20:59,795 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/rollingvms.yml:15
+2019-09-12 02:20:59,817 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:20:59,818 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:20:59,823 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254859.8171973-261909381380956 `" && echo ansible-tmp-1568254859.8171973-261909381380956="` echo /root/.ansible/tmp/ansible-tmp-1568254859.8171973-261909381380956 `" ) && sleep 0'
+2019-09-12 02:21:00,020 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2.py
+2019-09-12 02:21:00,021 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpl6np1kaw TO /root/.ansible/tmp/ansible-tmp-1568254859.8171973-261909381380956/AnsiballZ_ec2.py
+2019-09-12 02:21:00,022 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254859.8171973-261909381380956/ /root/.ansible/tmp/ansible-tmp-1568254859.8171973-261909381380956/AnsiballZ_ec2.py && sleep 0'
+2019-09-12 02:21:00,028 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254859.8171973-261909381380956/AnsiballZ_ec2.py && sleep 0'
+2019-09-12 02:21:34,693 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254859.8171973-261909381380956/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:21:34,706 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "instance_ids": [
+        "i-0adfd32cdf60643c2"
+    ],
+    "instances": [
+        {
+            "ami_launch_index": "0",
+            "architecture": "x86_64",
+            "block_device_mapping": {
+                "/dev/sda1": {
+                    "delete_on_termination": true,
+                    "status": "attached",
+                    "volume_id": "vol-07cd3e6309ef17730"
+                }
+            },
+            "dns_name": "",
+            "ebs_optimized": false,
+            "groups": {
+                "sg-0e158614109d1d217": "infintsecgroup"
+            },
+            "hypervisor": "xen",
+            "id": "i-0adfd32cdf60643c2",
+            "image_id": "ami-0c322300a1dd5dc79",
+            "instance_type": "t2.micro",
+            "kernel": null,
+            "key_name": "ansible-admin-key",
+            "launch_time": "2019-09-12T02:21:08.000Z",
+            "placement": "us-east-1b",
+            "private_dns_name": "ip-192-168-100-228.ec2.internal",
+            "private_ip": "192.168.100.228",
+            "public_dns_name": "",
+            "public_ip": null,
+            "ramdisk": null,
+            "region": "us-east-1",
+            "root_device_name": "/dev/sda1",
+            "root_device_type": "ebs",
+            "state": "running",
+            "state_code": 16,
+            "tags": {
+                "backend": "backend"
+            },
+            "tenancy": "default",
+            "virtualization_type": "hvm"
+        }
+    ],
+    "invocation": {
+        "module_args": {
+            "assign_public_ip": false,
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "count": 1,
+            "count_tag": null,
+            "debug_botocore_endpoint_logs": false,
+            "ebs_optimized": false,
+            "ec2_url": null,
+            "exact_count": null,
+            "group": null,
+            "group_id": [
+                "sg-0e158614109d1d217"
+            ],
+            "id": null,
+            "image": "ami-0c322300a1dd5dc79",
+            "instance_ids": null,
+            "instance_initiated_shutdown_behavior": "stop",
+            "instance_profile_name": null,
+            "instance_tags": {
+                "backend": "backend"
+            },
+            "instance_type": "t2.micro",
+            "kernel": null,
+            "key_name": "ansible-admin-key",
+            "monitoring": false,
+            "network_interfaces": null,
+            "placement_group": null,
+            "private_ip": null,
+            "profile": null,
+            "ramdisk": null,
+            "region": "us-east-1",
+            "security_token": null,
+            "source_dest_check": null,
+            "spot_launch_group": null,
+            "spot_price": null,
+            "spot_type": "one-time",
+            "spot_wait_timeout": 600,
+            "state": "present",
+            "tenancy": "default",
+            "termination_protection": null,
+            "user_data": null,
+            "validate_certs": true,
+            "volumes": null,
+            "vpc_subnet_id": "subnet-0d7d8f96d030bdc91",
+            "wait": true,
+            "wait_timeout": 300,
+            "zone": null
+        }
+    },
+    "tagged_instances": []
+}
+2019-09-12 02:21:34,745 p=14422 u=root |  TASK [common : add backend to group] ****************************************************************************************************
+2019-09-12 02:21:34,746 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/rollingvms.yml:34
+2019-09-12 02:21:34,773 p=14422 u=root |  creating host via 'add_host': hostname=192.168.100.228
+2019-09-12 02:21:34,781 p=14422 u=root |  changed: [vpc.ansible] => (item={'id': 'i-0adfd32cdf60643c2', 'ami_launch_index': '0', 'private_ip': '192.168.100.228', 'private_dns_name': 'ip-192-168-100-228.ec2.internal', 'public_ip': None, 'dns_name': '', 'public_dns_name': '', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-0c322300a1dd5dc79', 'key_name': 'ansible-admin-key', 'placement': 'us-east-1b', 'region': 'us-east-1', 'kernel': None, 'ramdisk': None, 'launch_time': '2019-09-12T02:21:08.000Z', 'instance_type': 't2.micro', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {'backend': 'backend'}, 'groups': {'sg-0e158614109d1d217': 'infintsecgroup'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-07cd3e6309ef17730', 'delete_on_termination': True}}, 'tenancy': 'default'}) => {
+    "add_host": {
+        "groups": [
+            "backend"
+        ],
+        "host_name": "192.168.100.228",
+        "host_vars": {}
+    },
+    "ansible_loop_var": "item",
+    "changed": true,
+    "item": {
+        "ami_launch_index": "0",
+        "architecture": "x86_64",
+        "block_device_mapping": {
+            "/dev/sda1": {
+                "delete_on_termination": true,
+                "status": "attached",
+                "volume_id": "vol-07cd3e6309ef17730"
+            }
+        },
+        "dns_name": "",
+        "ebs_optimized": false,
+        "groups": {
+            "sg-0e158614109d1d217": "infintsecgroup"
+        },
+        "hypervisor": "xen",
+        "id": "i-0adfd32cdf60643c2",
+        "image_id": "ami-0c322300a1dd5dc79",
+        "instance_type": "t2.micro",
+        "kernel": null,
+        "key_name": "ansible-admin-key",
+        "launch_time": "2019-09-12T02:21:08.000Z",
+        "placement": "us-east-1b",
+        "private_dns_name": "ip-192-168-100-228.ec2.internal",
+        "private_ip": "192.168.100.228",
+        "public_dns_name": "",
+        "public_ip": null,
+        "ramdisk": null,
+        "region": "us-east-1",
+        "root_device_name": "/dev/sda1",
+        "root_device_type": "ebs",
+        "state": "running",
+        "state_code": 16,
+        "tags": {
+            "backend": "backend"
+        },
+        "tenancy": "default",
+        "virtualization_type": "hvm"
+    }
+}
+2019-09-12 02:21:34,818 p=14422 u=root |  TASK [common : Deploy Frontend] *********************************************************************************************************
+2019-09-12 02:21:34,818 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/rollingvms.yml:51
+2019-09-12 02:21:34,839 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:21:34,839 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:21:34,844 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254894.838826-222923930517296 `" && echo ansible-tmp-1568254894.838826-222923930517296="` echo /root/.ansible/tmp/ansible-tmp-1568254894.838826-222923930517296 `" ) && sleep 0'
+2019-09-12 02:21:34,852 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/cloud/amazon/ec2.py
+2019-09-12 02:21:34,853 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpfgzuwxav TO /root/.ansible/tmp/ansible-tmp-1568254894.838826-222923930517296/AnsiballZ_ec2.py
+2019-09-12 02:21:34,853 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254894.838826-222923930517296/ /root/.ansible/tmp/ansible-tmp-1568254894.838826-222923930517296/AnsiballZ_ec2.py && sleep 0'
+2019-09-12 02:21:34,858 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254894.838826-222923930517296/AnsiballZ_ec2.py && sleep 0'
+2019-09-12 02:22:09,363 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254894.838826-222923930517296/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:22:09,375 p=14422 u=root |  changed: [vpc.ansible] => {
+    "changed": true,
+    "instance_ids": [
+        "i-0d267c4a3746097d8"
+    ],
+    "instances": [
+        {
+            "ami_launch_index": "0",
+            "architecture": "x86_64",
+            "block_device_mapping": {
+                "/dev/sda1": {
+                    "delete_on_termination": true,
+                    "status": "attached",
+                    "volume_id": "vol-06e5f2c224b74eadf"
+                }
+            },
+            "dns_name": "ec2-34-201-250-12.compute-1.amazonaws.com",
+            "ebs_optimized": false,
+            "groups": {
+                "sg-020180afe56b70139": "infextsecgroup"
+            },
+            "hypervisor": "xen",
+            "id": "i-0d267c4a3746097d8",
+            "image_id": "ami-0c322300a1dd5dc79",
+            "instance_type": "t2.micro",
+            "kernel": null,
+            "key_name": "ansible-admin-key",
+            "launch_time": "2019-09-12T02:21:40.000Z",
+            "placement": "us-east-1b",
+            "private_dns_name": "ip-172-25-0-11.ec2.internal",
+            "private_ip": "172.25.0.11",
+            "public_dns_name": "ec2-34-201-250-12.compute-1.amazonaws.com",
+            "public_ip": "34.201.250.12",
+            "ramdisk": null,
+            "region": "us-east-1",
+            "root_device_name": "/dev/sda1",
+            "root_device_type": "ebs",
+            "state": "running",
+            "state_code": 16,
+            "tags": {
+                "frontend": "frontend"
+            },
+            "tenancy": "default",
+            "virtualization_type": "hvm"
+        }
+    ],
+    "invocation": {
+        "module_args": {
+            "assign_public_ip": true,
+            "aws_access_key": null,
+            "aws_secret_key": null,
+            "count": 1,
+            "count_tag": null,
+            "debug_botocore_endpoint_logs": false,
+            "ebs_optimized": false,
+            "ec2_url": null,
+            "exact_count": null,
+            "group": null,
+            "group_id": [
+                "sg-020180afe56b70139"
+            ],
+            "id": null,
+            "image": "ami-0c322300a1dd5dc79",
+            "instance_ids": null,
+            "instance_initiated_shutdown_behavior": "stop",
+            "instance_profile_name": null,
+            "instance_tags": {
+                "frontend": "frontend"
+            },
+            "instance_type": "t2.micro",
+            "kernel": null,
+            "key_name": "ansible-admin-key",
+            "monitoring": false,
+            "network_interfaces": null,
+            "placement_group": null,
+            "private_ip": null,
+            "profile": null,
+            "ramdisk": null,
+            "region": "us-east-1",
+            "security_token": null,
+            "source_dest_check": null,
+            "spot_launch_group": null,
+            "spot_price": null,
+            "spot_type": "one-time",
+            "spot_wait_timeout": 600,
+            "state": "present",
+            "tenancy": "default",
+            "termination_protection": null,
+            "user_data": null,
+            "validate_certs": true,
+            "volumes": null,
+            "vpc_subnet_id": "subnet-0a9ac59c5102163fc",
+            "wait": true,
+            "wait_timeout": 300,
+            "zone": null
+        }
+    },
+    "tagged_instances": []
+}
+2019-09-12 02:22:09,421 p=14422 u=root |  TASK [common : add frontend to group] ***************************************************************************************************
+2019-09-12 02:22:09,421 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/rollingvms.yml:68
+2019-09-12 02:22:09,449 p=14422 u=root |  creating host via 'add_host': hostname=34.201.250.12
+2019-09-12 02:22:09,460 p=14422 u=root |  changed: [vpc.ansible] => (item={'id': 'i-0d267c4a3746097d8', 'ami_launch_index': '0', 'private_ip': '172.25.0.11', 'private_dns_name': 'ip-172-25-0-11.ec2.internal', 'public_ip': '34.201.250.12', 'dns_name': 'ec2-34-201-250-12.compute-1.amazonaws.com', 'public_dns_name': 'ec2-34-201-250-12.compute-1.amazonaws.com', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-0c322300a1dd5dc79', 'key_name': 'ansible-admin-key', 'placement': 'us-east-1b', 'region': 'us-east-1', 'kernel': None, 'ramdisk': None, 'launch_time': '2019-09-12T02:21:40.000Z', 'instance_type': 't2.micro', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {'frontend': 'frontend'}, 'groups': {'sg-020180afe56b70139': 'infextsecgroup'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-06e5f2c224b74eadf', 'delete_on_termination': True}}, 'tenancy': 'default'}) => {
+    "add_host": {
+        "groups": [
+            "frontend"
+        ],
+        "host_name": "34.201.250.12",
+        "host_vars": {}
+    },
+    "ansible_loop_var": "item",
+    "changed": true,
+    "item": {
+        "ami_launch_index": "0",
+        "architecture": "x86_64",
+        "block_device_mapping": {
+            "/dev/sda1": {
+                "delete_on_termination": true,
+                "status": "attached",
+                "volume_id": "vol-06e5f2c224b74eadf"
+            }
+        },
+        "dns_name": "ec2-34-201-250-12.compute-1.amazonaws.com",
+        "ebs_optimized": false,
+        "groups": {
+            "sg-020180afe56b70139": "infextsecgroup"
+        },
+        "hypervisor": "xen",
+        "id": "i-0d267c4a3746097d8",
+        "image_id": "ami-0c322300a1dd5dc79",
+        "instance_type": "t2.micro",
+        "kernel": null,
+        "key_name": "ansible-admin-key",
+        "launch_time": "2019-09-12T02:21:40.000Z",
+        "placement": "us-east-1b",
+        "private_dns_name": "ip-172-25-0-11.ec2.internal",
+        "private_ip": "172.25.0.11",
+        "public_dns_name": "ec2-34-201-250-12.compute-1.amazonaws.com",
+        "public_ip": "34.201.250.12",
+        "ramdisk": null,
+        "region": "us-east-1",
+        "root_device_name": "/dev/sda1",
+        "root_device_type": "ebs",
+        "state": "running",
+        "state_code": 16,
+        "tags": {
+            "frontend": "frontend"
+        },
+        "tenancy": "default",
+        "virtualization_type": "hvm"
+    }
+}
+2019-09-12 02:22:09,500 p=14422 u=root |  TASK [common : Wait for ssh of frontend] ************************************************************************************************
+2019-09-12 02:22:09,500 p=14422 u=root |  task path: /ansible/ansible_aws/roles/common/tasks/rollingvms.yml:74
+2019-09-12 02:22:09,529 p=14422 u=root |  <vpc.ansible> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-09-12 02:22:09,529 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-09-12 02:22:09,534 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1568254929.528526-117091483467732 `" && echo ansible-tmp-1568254929.528526-117091483467732="` echo /root/.ansible/tmp/ansible-tmp-1568254929.528526-117091483467732 `" ) && sleep 0'
+2019-09-12 02:22:09,702 p=14422 u=root |  Using module file /usr/local/lib/python3.6/site-packages/ansible/modules/utilities/logic/wait_for.py
+2019-09-12 02:22:09,703 p=14422 u=root |  <vpc.ansible> PUT /root/.ansible/tmp/ansible-local-14422pyhjdk8n/tmpw2i6pn23 TO /root/.ansible/tmp/ansible-tmp-1568254929.528526-117091483467732/AnsiballZ_wait_for.py
+2019-09-12 02:22:09,705 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1568254929.528526-117091483467732/ /root/.ansible/tmp/ansible-tmp-1568254929.528526-117091483467732/AnsiballZ_wait_for.py && sleep 0'
+2019-09-12 02:22:09,711 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'AWS_ACCESS_KEY_ID=AKIAJJ3OJARGQYWAB2XA AWS_SECRET_ACCESS_KEY=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 AWS_REGION=us-east-1 /usr/local/bin/python /root/.ansible/tmp/ansible-tmp-1568254929.528526-117091483467732/AnsiballZ_wait_for.py && sleep 0'
+2019-09-12 02:23:15,577 p=14422 u=root |  <vpc.ansible> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1568254929.528526-117091483467732/ > /dev/null 2>&1 && sleep 0'
+2019-09-12 02:23:15,592 p=14422 u=root |  ok: [vpc.ansible] => (item={'id': 'i-0d267c4a3746097d8', 'ami_launch_index': '0', 'private_ip': '172.25.0.11', 'private_dns_name': 'ip-172-25-0-11.ec2.internal', 'public_ip': '34.201.250.12', 'dns_name': 'ec2-34-201-250-12.compute-1.amazonaws.com', 'public_dns_name': 'ec2-34-201-250-12.compute-1.amazonaws.com', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-0c322300a1dd5dc79', 'key_name': 'ansible-admin-key', 'placement': 'us-east-1b', 'region': 'us-east-1', 'kernel': None, 'ramdisk': None, 'launch_time': '2019-09-12T02:21:40.000Z', 'instance_type': 't2.micro', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {'frontend': 'frontend'}, 'groups': {'sg-020180afe56b70139': 'infextsecgroup'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-06e5f2c224b74eadf', 'delete_on_termination': True}}, 'tenancy': 'default'}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "elapsed": 65,
+    "invocation": {
+        "module_args": {
+            "active_connection_states": [
+                "ESTABLISHED",
+                "FIN_WAIT1",
+                "FIN_WAIT2",
+                "SYN_RECV",
+                "SYN_SENT",
+                "TIME_WAIT"
+            ],
+            "connect_timeout": 5,
+            "delay": 0,
+            "exclude_hosts": null,
+            "host": "ec2-34-201-250-12.compute-1.amazonaws.com",
+            "msg": null,
+            "path": null,
+            "port": 22,
+            "search_regex": null,
+            "sleep": 1,
+            "state": "started",
+            "timeout": 300
+        }
+    },
+    "item": {
+        "ami_launch_index": "0",
+        "architecture": "x86_64",
+        "block_device_mapping": {
+            "/dev/sda1": {
+                "delete_on_termination": true,
+                "status": "attached",
+                "volume_id": "vol-06e5f2c224b74eadf"
+            }
+        },
+        "dns_name": "ec2-34-201-250-12.compute-1.amazonaws.com",
+        "ebs_optimized": false,
+        "groups": {
+            "sg-020180afe56b70139": "infextsecgroup"
+        },
+        "hypervisor": "xen",
+        "id": "i-0d267c4a3746097d8",
+        "image_id": "ami-0c322300a1dd5dc79",
+        "instance_type": "t2.micro",
+        "kernel": null,
+        "key_name": "ansible-admin-key",
+        "launch_time": "2019-09-12T02:21:40.000Z",
+        "placement": "us-east-1b",
+        "private_dns_name": "ip-172-25-0-11.ec2.internal",
+        "private_ip": "172.25.0.11",
+        "public_dns_name": "ec2-34-201-250-12.compute-1.amazonaws.com",
+        "public_ip": "34.201.250.12",
+        "ramdisk": null,
+        "region": "us-east-1",
+        "root_device_name": "/dev/sda1",
+        "root_device_type": "ebs",
+        "state": "running",
+        "state_code": 16,
+        "tags": {
+            "frontend": "frontend"
+        },
+        "tenancy": "default",
+        "virtualization_type": "hvm"
+    },
+    "match_groupdict": {},
+    "match_groups": [],
+    "path": null,
+    "port": 22,
+    "search_regex": null,
+    "state": "started"
+}
+2019-09-12 02:23:15,593 p=14422 u=root |  META: ran handlers
+2019-09-12 02:23:15,594 p=14422 u=root |  META: ran handlers
+2019-09-12 02:23:15,595 p=14422 u=root |  PLAY RECAP ******************************************************************************************************************************
+2019-09-12 02:23:15,595 p=14422 u=root |  vpc.ansible                : ok=20   changed=16   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

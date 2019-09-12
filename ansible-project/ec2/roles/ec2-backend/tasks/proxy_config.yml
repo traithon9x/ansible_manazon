@@ -1,0 +1,8 @@
+---
+# tasks file for ec2-backend
+
+- name: set proxy server for backend (yum repo)
+  # raw: sh -c 'echo "http_proxy=http://{{ frontend_private_ip }}:3128" >> /etc/yum.conf'
+  shell: grep -q 'regex' /etc/yum.conf && echo exists || echo 'proxy=http://{{ frontend_private_ip }}:3128' >> /etc/yum.conf
+  register: result
+  changed_when: result.stdout.find('exists') == -1
