@@ -1,0 +1,1 @@
+docker run -ti --rm -v $PWD\ansible-project:/ansible   b5c08f47a23e sh
